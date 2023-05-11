@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/consts.dart';
+import 'package:pharmacy/consts/firebase_consts.dart';
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/controller/profile_controller.dart';
 import 'package:pharmacy/widgets_common/bg_widget.dart';
@@ -54,23 +55,50 @@ class EditProfileScreen extends StatelessWidget {
                 hint: nameHint,
                 title: name,
                 isPass: false),
+            10.heightBox,
             customTextField(
-                controller: controller.passController,
+                controller: controller.oldpassController,
                 hint: passwordHint,
-                title: password,
+                title: "Old Password",
                 isPass: false),
-            20.heightBox,
+            10.heightBox,
+            customTextField(
+                controller: controller.newpassController,
+                hint: passwordHint,
+                title: "New Password",
+                isPass: false),
+            10.heightBox,
             SizedBox(
               width: context.screenWidth - 60,
               child: ourButton(
                   color: redColor,
                   onPress: () async {
                     controller.isLoading(true);
-                    await controller.uploadProfileImage();
-                    await controller.updateProfile(
-                        imgUrl: controller.profileImageLink,
-                        name: controller.nameController.text,
-                        password: controller.passController.text);
+                    //if image is not selected
+                    if (controller.profileImgPath.value.isNotEmpty) {
+                      await controller.uploadProfileImage();
+                    } else {
+                      controller.profileImageLink = data["imageUrl"];
+                    }
+                    //if old password matches data base
+                    if (data["password"] == controller.oldpassController.text) {
+                      await controller.changeAuthPassword(
+                        email:data["email"],
+                        password: controller.oldpassController.text,
+                        newpassword: controller.newpassController.text
+
+                      );
+
+                      await controller.uploadProfileImage();
+                      await controller.updateProfile(
+                          imgUrl: controller.profileImageLink,
+                          name: controller.nameController.text,
+                          password: controller.newpassController.text);
+                      VxToast.show(context, msg: "updated");
+                    } else {
+                      VxToast.show(context, msg: "Wrong old password");
+                      controller.isLoading(false);
+                    }
                   },
                   textColor: whiteColor,
                   title: "Save"),

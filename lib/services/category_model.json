@@ -1,0 +1,77 @@
+{
+    "categories":[
+        {
+            "name":"Ağrı Kesici",
+            "subcategory":[
+                "Reçeteli Ağrı Kesiciler",
+                "Reçetesiz Ağrı Kesiciler"
+
+            ]
+
+        },
+        {
+            "name":"Kremler",
+            "subcategory":[
+                "Merhem",
+                "Yanık Kremleri",
+                "Kas Gevşetici"
+            ]
+        },
+        {
+            "name":"Doğal Tedavi",
+            "subcategory":[
+                "Zayıflama Çayı",
+                "Detoks Çayı",
+                "Bel Fıtığı"
+            ]
+        },
+        {
+            "name":"Kremler",
+            "subcategory":[
+                "Merhem",
+                "Yanık Kremleri",
+                "Kas Gevşetici"
+            ]
+        },
+        {
+            "name":"Kremler",
+            "subcategory":[
+                "Merhem",
+                "Yanık Kremleri",
+                "Kas Gevşetici"
+            ]
+        },
+        {
+            "name":"Kremler",
+            "subcategory":[
+                "Merhem",
+                "Yanık Kremleri",
+                "Kas Gevşetici"
+            ]
+        },
+        {
+            "name":"Kremler",
+            "subcategory":[
+                "Merhem",
+                "Yanık Kremleri",
+                "Kas Gevşetici"
+            ]
+        },
+        {
+            "name":"Kremler",
+            "subcategory":[
+                "Merhem",
+                "Yanık Kremleri",
+                "Kas Gevşetici"
+            ]
+        },
+        {
+            "name":"Kremler",
+            "subcategory":[
+                "Merhem",
+                "Yanık Kremleri",
+                "Kas Gevşetici"
+            ]
+        }
+    ]
+}

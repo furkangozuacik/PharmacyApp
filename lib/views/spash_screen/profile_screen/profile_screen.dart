@@ -48,6 +48,8 @@ class ProfileScreen extends StatelessWidget {
                           Icons.edit,
                           color: whiteColor,
                         )).onTap(() {
+                      controller.nameController.text = data["name"];
+                      
                       Get.to(() => EditProfileScreen(
                             data: data,
                           ));
@@ -127,6 +129,7 @@ class ProfileScreen extends StatelessWidget {
                               leading: Image.asset(
                                 profileButtonsIcon[index],
                                 width: 22,
+                                
                               ),
                               title: profileButtonsIcon[index]
                                   .text
