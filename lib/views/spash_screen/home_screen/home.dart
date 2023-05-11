@@ -12,6 +12,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
 import '../../../consts/colors.dart';
+import '../chatscreen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -36,6 +37,12 @@ class Home extends StatelessWidget {
           label: categories),
       BottomNavigationBarItem(
           icon: Image.asset(
+            icAi,
+            width: 26,
+          ),
+          label: ai),
+      BottomNavigationBarItem(
+          icon: Image.asset(
             icCart,
             width: 26,
           ),
@@ -51,6 +58,7 @@ class Home extends StatelessWidget {
     var navBody = [
       HomeScreen(),
       CategoryScreen(),
+      ChatScreen(),
       CartScreen(),
       ProfileScreen()
     ];
@@ -68,7 +76,7 @@ class Home extends StatelessWidget {
         () => BottomNavigationBar(
           currentIndex: controller.currentNavIndex.value,
           selectedItemColor: redColor,
-          selectedLabelStyle: TextStyle(fontFamily: semibold),
+          selectedLabelStyle: const TextStyle(fontFamily: semibold),
           type: BottomNavigationBarType.fixed,
           items: navbarItem,
           backgroundColor: whiteColor,

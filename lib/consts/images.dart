@@ -9,6 +9,7 @@ const icBrands = "assets/icons/brands.png";
 const icCompaigns = "assets/icons/compaigns.png";
 const icCart = "assets/icons/cart.png";
 const icCategories = "assets/icons/categories.png";
+const icAi = "assets/icons/ai.png";
 const icChangePassword = "assets/icons/changed_password.png";
 const icChat = "assets/icons/chat.png";
 const icClubpoint = "assets/icons/clubpoint.png";
