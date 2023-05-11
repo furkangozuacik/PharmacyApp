@@ -7,7 +7,7 @@ import 'package:pharmacy/consts/consts.dart';
 import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/widgets_common/bg_widget.dart';
 import 'package:velocity_x/velocity_x.dart';
-
+import 'package:pharmacy/controller/product_controller.dart';
 import '../../../consts/styles.dart';
 import 'category_details.dart';
 
@@ -16,6 +16,7 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(ProductController());
     return bgWidget(
         child: Scaffold(
       appBar: AppBar(title: categories.text.fontFamily(bold).make()),
@@ -53,6 +54,7 @@ class CategoryScreen extends StatelessWidget {
                   .outerShadowSm
                   .make()
                   .onTap(() {
+                controller.getSubCategories(categoriesList[index]);
                 Get.to(() => CategoryDetails(title: categoriesList[index]));
               });
             }),

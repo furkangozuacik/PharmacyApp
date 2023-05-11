@@ -83,13 +83,11 @@ class EditProfileScreen extends StatelessWidget {
                     //if old password matches data base
                     if (data["password"] == controller.oldpassController.text) {
                       await controller.changeAuthPassword(
-                        email:data["email"],
+                        email: data["email"],
                         password: controller.oldpassController.text,
                         newpassword: controller.newpassController.text
-
                       );
 
-                      await controller.uploadProfileImage();
                       await controller.updateProfile(
                           imgUrl: controller.profileImageLink,
                           name: controller.nameController.text,

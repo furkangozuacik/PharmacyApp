@@ -26,15 +26,14 @@
             ]
         },
         {
-            "name":"Kremler",
+            "name":"Kişisel Bakım",
             "subcategory":[
-                "Merhem",
-                "Yanık Kremleri",
-                "Kas Gevşetici"
+                "Gargaralar",
+                "Cilt Bakım Losyonu"
             ]
         },
         {
-            "name":"Kremler",
+            "name":"Losyonlar",
             "subcategory":[
                 "Merhem",
                 "Yanık Kremleri",
