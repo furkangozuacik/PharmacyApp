@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:pharmacy/consts/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/consts/styles.dart';
+import 'package:pharmacy/views/spash_screen/chatscreen.dart';
 import 'package:pharmacy/views/spash_screen/home_screen/components/featured_button.dart';
 import 'package:pharmacy/widgets_common/home_buttons.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -29,6 +31,7 @@ class HomeScreen extends StatelessWidget {
             height: 60,
             color: lightGrey,
             child: TextFormField(
+              //search
               decoration: InputDecoration(
                   border: InputBorder.none,
                   suffixIcon: Icon(Icons.search),
@@ -43,153 +46,63 @@ class HomeScreen extends StatelessWidget {
               physics: BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  VxSwiper.builder(
-                      aspectRatio: 16 / 9,
-                      autoPlay: true,
-                      height: 150,
-                      enlargeCenterPage: true,
-                      itemCount: slidersList.length,
-                      itemBuilder: (context, index) {
-                        return Image.asset(slidersList[index],
-                                fit: BoxFit.fitWidth)
-                            .box
-                            .rounded
-                            .clip(Clip.antiAlias)
-                            .margin(EdgeInsets.symmetric(horizontal: 8))
-                            .make();
-                      }),
-                  10.heightBox,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(
-                        2,
-                        (index) => homeButtons(
-                            height: context.screenHeight * 0.15,
-                            width: context.screenWidth / 2.5,
-                            icon: index == 0 ? icTodaysDeal : icFlashDeal,
-                            title: index == 0 ? todayDeal : flashSale)),
+                  Container(
+                    child: Image.asset(addd),
+                    height: 150,
                   ),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: MaterialButton(
+                              onPressed: () {},
+                              child: Column(
+                                children: [
+                                  Text("MHRS"),
+                                  Text("Click for hospital appointment"),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: MaterialButton(
+                              onPressed: () => Get.to(ChatScreen()),
+                              child: Column(
+                                children: [
+                                  Icon(Icons.air),
+                                  Text("Which doctor should I go to ?"),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ]),
                   //2nd slider
-                  VxSwiper.builder(
-                      aspectRatio: 16 / 9,
-                      autoPlay: true,
-                      height: 150,
-                      enlargeCenterPage: true,
-                      itemCount: secondSliderList.length,
-                      itemBuilder: (context, index) {
-                        return Image.asset(secondSliderList[index],
-                                fit: BoxFit.fitWidth)
-                            .box
-                            .rounded
-                            .clip(Clip.antiAlias)
-                            .margin(EdgeInsets.symmetric(horizontal: 8))
-                            .make();
-                      }),
-
-                  10.heightBox,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(
-                        3,
-                        (index) => homeButtons(
-                              height: context.screenHeight * 0.15,
-                              width: context.screenWidth / 3.5,
-                              icon: index == 0
-                                  ? icTopCategories
-                                  : index == 1
-                                      ? icBrands
-                                      : icTopSeller,
-                              title: index == 0
-                                  ? topCategories
-                                  : index == 1
-                                      ? brand
-                                      : topSellers,
-                            )),
+                  SizedBox(
+                    height: 10,
                   ),
-
-                  //featured categories
-                  20.heightBox,
+                  Container(
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: Image.asset(barkod),
+                  ),
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: featuredCategories.text
+                    child: featuredProduct.text
                         .color(darkFontGrey)
                         .size(22)
                         .fontFamily(semibold)
                         .make(),
-                  ),
-                  20.heightBox,
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                          3,
-                          (index) => Column(
-                                children: [
-                                  featuredButton(
-                                      icon: featuredImages1[index],
-                                      title: featuredTitles1[index]),
-                                  10.heightBox,
-                                  featuredButton(
-                                      icon: featuredImages2[index],
-                                      title: featuredTitles2[index])
-                                ],
-                              )).toList(),
-                    ),
-                  ),
-                  //featured product
-
-                  20.heightBox,
-
-                  Container(
-                    padding: EdgeInsets.all(12),
-                    width: double.infinity,
-                    decoration: BoxDecoration(color: redColor),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          featuredProduct.text.white
-                              .fontFamily(bold)
-                              .size(18)
-                              .make(),
-                          10.heightBox,
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                                children: List.generate(
-                                    6,
-                                    (index) => Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Image.asset(
-                                              imgP1,
-                                              width: 150,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            10.heightBox,
-                                            ",Ağrı Kesici"
-                                                .text
-                                                .fontFamily(semibold)
-                                                .color(darkFontGrey)
-                                                .make(),
-                                            10.heightBox,
-                                            "₺ 20.00"
-                                                .text
-                                                .color(redColor)
-                                                .fontFamily(bold)
-                                                .size(16)
-                                                .make()
-                                          ],
-                                        )
-                                            .box
-                                            .white
-                                            .rounded
-                                            .margin(EdgeInsets.symmetric(
-                                                horizontal: 4))
-                                            .padding(EdgeInsets.all(8))
-                                            .make())),
-                          )
-                        ]),
                   ),
                   20.heightBox,
                   VxSwiper.builder(

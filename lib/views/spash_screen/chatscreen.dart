@@ -6,7 +6,7 @@ import '../../controller/chat_controller.dart';
 import '../../model/chat.dart';
 
 const backgroundColor = Color(0xff343541);
-const botBackgroundColor = Color(0xff444654);
+const botBackgroundColor = Color.fromARGB(255, 133, 133, 139);
 
 final ChatController controller = Get.put(ChatController());
 
@@ -33,13 +33,14 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 80,
         title: const Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(4.0),
           child: Text(
-            "Neyim var?",
-            maxLines: 2,
+            "Which vitamins should I take?\n You can ask questions like.",
+            maxLines: 3,
             textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 14),
           ),
         ),
         backgroundColor: botBackgroundColor,
