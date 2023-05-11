@@ -15,7 +15,6 @@ const createNewAccount = "or, create new account";
 const loginWith = "Log in with";
 const privacyPolicy = "Privacy Policy";
 
-
 const termAndCond = "Terms and Conditions";
 const alreadyHaveAccount = "Already have an account?";
 //home strings
@@ -24,15 +23,15 @@ const home = "Home",
     categories = "Categories",
     cart = "Cart",
     account = "Account";
-const womenClothing = "Women's Clothing",
-    menClothingFashion = "Men Clothin & Fashion",
-    compAccess = "Computer & Accessories",
-    automobile = "Automobile",
-    kidtoys = "Kids Toys",
-    sports = "sports",
-    jewelery = "Jewelery",
-    cellphone = "cellphone",
-    furniture = "furniture";
+const womenClothing = "Ağrı Kesici",
+    menClothingFashion = "Kremler",
+    compAccess = "Reçeteli İlaçlar",
+    automobile = "Reçetesiz İlaçlar",
+    kidtoys = "Zayıflama Çayları",
+    sports = "Şuruplar",
+    jewelery = "Kişisel Bakım",
+    cellphone = "Doğal Tedavi",
+    furniture = "Bitkisel İlaçlar";
 
 //item details strings
 
