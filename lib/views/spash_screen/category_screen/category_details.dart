@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/lists.dart';
+import 'package:pharmacy/controller/product_controller.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/item_details.dart';
 import 'package:pharmacy/widgets_common/bg_widget.dart';
 import "package:pharmacy/consts/consts.dart";
@@ -18,20 +19,22 @@ class CategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<ProductController>();
     return bgWidget(
         child: Scaffold(
       appBar: AppBar(title: title!.text.fontFamily(bold).white.make()),
       body: Container(
           padding: EdgeInsets.all(12),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
                     children: List.generate(
-                        6,
-                        (index) => "Baby cloth"
+                        controller.subcat.length,
+                        (index) => "${controller.subcat[index]}"
                             .text
                             .size(12)
                             .fontFamily(semibold)

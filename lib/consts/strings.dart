@@ -25,13 +25,13 @@ const home = "Home",
     account = "Account";
 const womenClothing = "Ağrı Kesici",
     menClothingFashion = "Kremler",
-    compAccess = "Reçeteli İlaçlar",
-    automobile = "Reçetesiz İlaçlar",
-    kidtoys = "Zayıflama Çayları",
-    sports = "Şuruplar",
-    jewelery = "Kişisel Bakım",
-    cellphone = "Doğal Tedavi",
-    furniture = "Bitkisel İlaçlar";
+    compAccess = "Doğal Tedavi",
+    automobile = "Kişisel Bakım",
+    kidtoys = "Losyonlar",
+    sports = "Merhemler",
+    jewelery = "Kilo İlaçları",
+    cellphone = "Vitaminler",
+    furniture = "Steroitler";
 
 //item details strings
 

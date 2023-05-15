@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/lists.dart';
@@ -22,13 +21,13 @@ class ItemDetails extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.share,
               ),
             ),
             IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.favorite_outline,
               ),
             )
@@ -38,7 +37,7 @@ class ItemDetails extends StatelessWidget {
           children: [
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: SingleChildScrollView(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +97,7 @@ class ItemDetails extends StatelessWidget {
                                     .make()
                               ],
                             )),
-                            CircleAvatar(
+                            const CircleAvatar(
                               backgroundColor: Colors.white,
                               child: Icon(
                                 Icons.message_rounded,
@@ -130,12 +129,12 @@ class ItemDetails extends StatelessWidget {
                                           .size(40, 40)
                                           .roundedFull
                                           .color(Vx.randomPrimaryColor)
-                                          .margin(EdgeInsets.symmetric(
+                                          .margin(const EdgeInsets.symmetric(
                                               horizontal: 6))
                                           .make()),
                                 )
                               ],
-                            ).box.padding(EdgeInsets.all(8)).make(),
+                            ).box.padding(const EdgeInsets.all(8)).make(),
 
                             //quantity section
 
@@ -150,7 +149,7 @@ class ItemDetails extends StatelessWidget {
                                   children: [
                                     IconButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.remove)),
+                                        icon: const Icon(Icons.remove)),
                                     "0"
                                         .text
                                         .size(16)
@@ -159,7 +158,7 @@ class ItemDetails extends StatelessWidget {
                                         .make(),
                                     IconButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.add)),
+                                        icon: const Icon(Icons.add)),
                                     10.widthBox,
                                     "(0 avaliable)"
                                         .text
@@ -168,7 +167,7 @@ class ItemDetails extends StatelessWidget {
                                   ],
                                 ),
                               ],
-                            ).box.padding(EdgeInsets.all(8)).make(),
+                            ).box.padding(const EdgeInsets.all(8)).make(),
 
                             //total section
 
@@ -186,7 +185,7 @@ class ItemDetails extends StatelessWidget {
                                     .fontFamily(bold)
                                     .make()
                               ],
-                            ).box.padding(EdgeInsets.all(8)).make()
+                            ).box.padding(const EdgeInsets.all(8)).make()
                           ],
                         ).box.white.shadowSm.make(),
                         //decription section
@@ -204,17 +203,17 @@ class ItemDetails extends StatelessWidget {
                         10.heightBox,
                         //buttons
                         ListView(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           children: List.generate(
                               itemDetailButtonList.length,
                               (index) => ListTile(
-                                    title: "${itemDetailButtonList[index]}"
+                                    title: itemDetailButtonList[index]
                                         .text
                                         .fontFamily(semibold)
                                         .color(darkFontGrey)
                                         .make(),
-                                    trailing: Icon(Icons.arrow_forward),
+                                    trailing: const Icon(Icons.arrow_forward),
                                   )),
                         ),
                         20.heightBox,
@@ -258,9 +257,9 @@ class ItemDetails extends StatelessWidget {
                                           .box
                                           .white
                                           .rounded
-                                          .margin(EdgeInsets.symmetric(
+                                          .margin(const EdgeInsets.symmetric(
                                               horizontal: 4))
-                                          .padding(EdgeInsets.all(8))
+                                          .padding(const EdgeInsets.all(8))
                                           .make())),
                         )
                       ]

@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                               .then((value) {
                             if (value != null) {
                               VxToast.show(context, msg: loggedin);
-                              Get.to(() => const Home());
+                              Get.offAll(() => const Home());
                             } else {
                               controller.isloading(false);
                             }

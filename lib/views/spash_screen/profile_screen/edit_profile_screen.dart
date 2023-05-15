@@ -21,6 +21,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<ProfileController>();
+  
 
     return bgWidget(
         child: Scaffold(
@@ -29,6 +30,7 @@ class EditProfileScreen extends StatelessWidget {
         () => Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            //buradaki bişileri silmesi lazım
             controller.profileImgPath.isEmpty
                 ? Image.asset(
                     imgProfile2,
@@ -48,7 +50,7 @@ class EditProfileScreen extends StatelessWidget {
                 },
                 textColor: whiteColor,
                 title: "Change"),
-            Divider(),
+            const Divider(),
             20.heightBox,
             customTextField(
                 controller: controller.nameController,
@@ -83,10 +85,9 @@ class EditProfileScreen extends StatelessWidget {
                     //if old password matches data base
                     if (data["password"] == controller.oldpassController.text) {
                       await controller.changeAuthPassword(
-                        email: data["email"],
-                        password: controller.oldpassController.text,
-                        newpassword: controller.newpassController.text
-                      );
+                          email: data["email"],
+                          password: controller.oldpassController.text,
+                          newpassword: controller.newpassController.text);
 
                       await controller.updateProfile(
                           imgUrl: controller.profileImageLink,

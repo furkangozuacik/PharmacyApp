@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy/consts/consts.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../consts/firebase_consts.dart';
@@ -30,7 +29,7 @@ class AuthController extends GetxController {
   Future<UserCredential?> signupMethod({email, password, context}) async {
     UserCredential? userCredential;
     try {
-      await auth.createUserWithEmailAndPassword(
+      userCredential = await auth.createUserWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
       VxToast.show(context, msg: e.toString());
