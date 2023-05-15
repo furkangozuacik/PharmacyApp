@@ -7,8 +7,7 @@ import 'package:pharmacy/views/spash_screen/category_screen/category_screen.dart
 import 'package:pharmacy/views/spash_screen/home_screen/home_screen.dart';
 import 'package:pharmacy/views/spash_screen/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get.dart';
 
 import '../../../consts/colors.dart';
@@ -56,11 +55,11 @@ class Home extends StatelessWidget {
     ];
 
     var navBody = [
-      HomeScreen(),
-      CategoryScreen(),
-      ChatScreen(),
-      CartScreen(),
-      ProfileScreen()
+     const HomeScreen(),
+     const CategoryScreen(),
+     const ChatScreen(),
+     const CartScreen(),
+     const ProfileScreen()
     ];
     return Scaffold(
       body: Column(

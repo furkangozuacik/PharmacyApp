@@ -93,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
                                   .signoutMethod(context: context);
                               Get.offAll(() => const LoginScreen());
                             },
-                            child: Text("Çıkış Yap"))
+                            child:const Text("Çıkış Yap"))
                       ],
                     ),
                   ),

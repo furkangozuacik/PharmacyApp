@@ -6,8 +6,7 @@ import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/views/spash_screen/applogo_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:pharmacy/views/spash_screen/home_screen/home.dart';
@@ -62,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
           appname.text.fontFamily(bold).size(22).white.make(),
           5.heightBox,
           appversion.text.white.make(),
-          Spacer(),
+         const Spacer(),
           credits.text.white.fontFamily(semibold).make(),
           30.heightBox,
         ],

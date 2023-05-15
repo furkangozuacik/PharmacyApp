@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/consts.dart';
@@ -21,11 +20,11 @@ class CategoryScreen extends StatelessWidget {
         child: Scaffold(
       appBar: AppBar(title: categories.text.fontFamily(bold).make()),
       body: Container(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: GridView.builder(
             shrinkWrap: true,
             itemCount: 9,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
@@ -40,7 +39,7 @@ class CategoryScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   10.heightBox,
-                  "${categoriesList[index]}"
+                  categoriesList[index]
                       .text
                       .color(darkFontGrey)
                       .align(TextAlign.center)

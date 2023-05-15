@@ -1,7 +1,6 @@
 import 'package:pharmacy/consts/consts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/consts/styles.dart';
@@ -17,7 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding:const EdgeInsets.all(12),
       color: lightGrey,
       width: context.screenWidth,
       height: context.screenHeight,
@@ -29,7 +28,7 @@ class HomeScreen extends StatelessWidget {
             height: 60,
             color: lightGrey,
             child: TextFormField(
-              decoration: InputDecoration(
+              decoration:const InputDecoration(
                   border: InputBorder.none,
                   suffixIcon: Icon(Icons.search),
                   filled: true,
@@ -40,7 +39,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics:const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   VxSwiper.builder(
@@ -55,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                             .box
                             .rounded
                             .clip(Clip.antiAlias)
-                            .margin(EdgeInsets.symmetric(horizontal: 8))
+                            .margin(const EdgeInsets.symmetric(horizontal: 8))
                             .make();
                       }),
                   10.heightBox,
@@ -82,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                             .box
                             .rounded
                             .clip(Clip.antiAlias)
-                            .margin(EdgeInsets.symmetric(horizontal: 8))
+                            .margin(const EdgeInsets.symmetric(horizontal: 8))
                             .make();
                       }),
 
@@ -141,9 +140,9 @@ class HomeScreen extends StatelessWidget {
                   20.heightBox,
 
                   Container(
-                    padding: EdgeInsets.all(12),
+                    padding:const EdgeInsets.all(12),
                     width: double.infinity,
-                    decoration: BoxDecoration(color: redColor),
+                    decoration:const BoxDecoration(color: redColor),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -184,9 +183,9 @@ class HomeScreen extends StatelessWidget {
                                             .box
                                             .white
                                             .rounded
-                                            .margin(EdgeInsets.symmetric(
+                                            .margin(const EdgeInsets.symmetric(
                                                 horizontal: 4))
-                                            .padding(EdgeInsets.all(8))
+                                            .padding(const EdgeInsets.all(8))
                                             .make())),
                           )
                         ]),
@@ -204,16 +203,16 @@ class HomeScreen extends StatelessWidget {
                             .box
                             .rounded
                             .clip(Clip.antiAlias)
-                            .margin(EdgeInsets.symmetric(horizontal: 8))
+                            .margin(const EdgeInsets.symmetric(horizontal: 8))
                             .make();
                       }),
 
                   20.heightBox,
                   GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics:const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: 6,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 8,
                           crossAxisSpacing: 8,
@@ -228,7 +227,7 @@ class HomeScreen extends StatelessWidget {
                               width: 200,
                               fit: BoxFit.cover,
                             ),
-                            Spacer(),
+                           const Spacer(),
                             ",Ağrı Kesici"
                                 .text
                                 .fontFamily(semibold)
@@ -246,8 +245,8 @@ class HomeScreen extends StatelessWidget {
                             .box
                             .white
                             .rounded
-                            .margin(EdgeInsets.symmetric(horizontal: 4))
-                            .padding(EdgeInsets.all(12))
+                            .margin(const EdgeInsets.symmetric(horizontal: 4))
+                            .padding(const EdgeInsets.all(12))
                             .make();
                       })
                 ],

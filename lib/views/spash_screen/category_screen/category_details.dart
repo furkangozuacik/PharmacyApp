@@ -1,16 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/colors.dart';
-import 'package:pharmacy/consts/images.dart';
-import 'package:pharmacy/consts/lists.dart';
+
 import 'package:pharmacy/controller/product_controller.dart';
 import 'package:pharmacy/services/firestore_services.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/item_details.dart';
 import 'package:pharmacy/widgets_common/bg_widget.dart';
-import "package:pharmacy/consts/consts.dart";
 import 'package:pharmacy/widgets_common/loading_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -49,8 +46,8 @@ class CategoryDetails extends StatelessWidget {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                                 children: List.generate(
-                                    6,
-                                    (index) => "Baby cloth"
+                                    controller.subcat.length,
+                                    (index) => "${controller.subcat[index]}"
                                         .text
                                         .size(12)
                                         .fontFamily(semibold)
@@ -115,8 +112,8 @@ class CategoryDetails extends StatelessWidget {
                                             .make()
                                             .onTap(() {
                                           Get.to(() => ItemDetails(
-                                              title:
-                                                  "${data[index]['p_name']}",data:data[index]));
+                                              title: "${data[index]['p_name']}",
+                                              data: data[index]));
                                         });
                                       })))
                         ],

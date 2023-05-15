@@ -184,7 +184,7 @@ class ChatMessageWidget extends StatelessWidget {
           chatMessageType == ChatMessageType.bot
               ? Container(
                   margin: const EdgeInsets.only(right: 16.0),
-                  child: CircleAvatar(
+                  child:const CircleAvatar(
                     backgroundColor: Colors.green,
                     child: Icon(Icons.person_search),
                   ),

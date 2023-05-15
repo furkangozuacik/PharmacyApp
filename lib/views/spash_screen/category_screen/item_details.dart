@@ -18,7 +18,6 @@ class ItemDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<ProductController>();
-    print(Colors.purple.value);
     return Scaffold(
         backgroundColor: lightGrey,
         appBar: AppBar(
@@ -117,7 +116,7 @@ class ItemDetails extends StatelessWidget {
                         )
                             .box
                             .height(60)
-                            .padding(EdgeInsets.symmetric(horizontal: 16))
+                            .padding(const EdgeInsets.symmetric(horizontal: 16))
                             .color(textfieldGrey)
                             .make(),
                         //color section
