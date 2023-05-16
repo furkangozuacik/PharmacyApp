@@ -7,6 +7,8 @@ import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/consts/strings.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/product_controller.dart';
+import 'package:pharmacy/views/spash_screen/chat_screen/seller_chat_screen.dart';
+import 'package:pharmacy/views/spash_screen/chatscreen.dart';
 import 'package:pharmacy/widgets_common/our_button.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -41,10 +43,19 @@ class ItemDetails extends StatelessWidget {
                   Icons.share,
                 ),
               ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_outline,
+              Obx(
+                () => IconButton(
+                  onPressed: () {
+                    if (controller.isFav.value) {
+                      controller.removeFromWishList(data.id, context);
+                    } else {
+                      controller.addToWishList(data.id, context);
+                    }
+                  },
+                  icon: Icon(
+                    Icons.favorite_outline,
+                    color: controller.isFav.value ? redColor : darkFontGrey,
+                  ),
                 ),
               )
             ],
@@ -127,7 +138,13 @@ class ItemDetails extends StatelessWidget {
                                   Icons.message_rounded,
                                   color: darkFontGrey,
                                 ),
-                              )
+                              ).onTap(() {
+                                Get.to(() => const SellerChatScreen(),
+                                    arguments: [
+                                      data["p_seller"],
+                                      data["vendor_id"]
+                                    ]);
+                              })
                             ],
                           )
                               .box

@@ -7,6 +7,7 @@ import 'package:pharmacy/consts/firebase_consts.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/cart_controller.dart';
 import 'package:pharmacy/services/firestore_services.dart';
+import 'package:pharmacy/views/spash_screen/cart_screen/shipping_screen.dart';
 import 'package:pharmacy/widgets_common/loading_indicator.dart';
 import 'package:pharmacy/widgets_common/our_button.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -18,6 +19,15 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.put(CartController());
     return Scaffold(
+        bottomNavigationBar: SizedBox(
+            height: 60,
+            child: ourButton(
+                color: redColor,
+                onPress: () {
+                  Get.to(() => ShippingDetails());
+                },
+                textColor: whiteColor,
+                title: "Proceed to shipping")),
         backgroundColor: whiteColor,
         appBar: AppBar(
             automaticallyImplyLeading: false,
@@ -39,6 +49,7 @@ class CartScreen extends StatelessWidget {
             } else {
               var data = snapshot.data!.docs;
               controller.calculate(data);
+              controller.productSnapshot = data;
               return Padding(
                   padding: const EdgeInsets.all(8),
                   child: Column(
@@ -88,12 +99,12 @@ class CartScreen extends StatelessWidget {
                                 .make(),
                           ),
                           10.heightBox,
-                          SizedBox(
-                              child: ourButton(
-                                  color: redColor,
-                                  onPress: () {},
-                                  textColor: whiteColor,
-                                  title: "Proceed to shipping"))
+                          // SizedBox(
+                          //     child: ourButton(
+                          //         color: redColor,
+                          //         onPress: () {},
+                          //         textColor: whiteColor,
+                          //         title: "Proceed to shipping"))
                         ],
                       )
                           .box

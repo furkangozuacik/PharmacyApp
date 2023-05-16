@@ -44,3 +44,7 @@ const itemDetailButtonList = [video, reviews, returnpolicy, supportPolicy];
 const profileButtonsList = [orders, wishlist, message];
 
 const profileButtonsIcon = [icOrder, icOrders, icMessages];
+
+const paymentMethodsImg = [imgPaypal, imgStripe, imgCod];
+
+const paymentMethods = [paypal, stripe, cod];
