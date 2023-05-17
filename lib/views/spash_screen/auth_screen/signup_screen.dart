@@ -1,9 +1,7 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/consts.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
-import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/auth_controller.dart';
 import 'package:pharmacy/views/spash_screen/applogo_widget.dart';
@@ -85,7 +83,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     10.widthBox,
                     Expanded(
                       child: RichText(
-                        text: TextSpan(children: [
+                        text:const TextSpan(children: [
                           TextSpan(
                               text: "I agree to the ",
                               style: TextStyle(
@@ -133,7 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               }).then((value) {
                                 VxToast.show(context, msg: loggedin);
 
-                                Get.offAll(() => Home());
+                                Get.offAll(() =>const Home());
                               });
                             } catch (e) {
                               auth.signOut();
@@ -144,7 +142,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         }).box.width(context.screenWidth - 50).make(),
                 10.heightBox,
                 RichText(
-                    text: TextSpan(children: [
+                    text:const TextSpan(children: [
                   TextSpan(
                       text: alreadyHaveAccount,
                       style: TextStyle(fontFamily: bold, color: fontGrey)),
@@ -159,7 +157,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 .box
                 .white
                 .rounded
-                .padding(EdgeInsets.all(16))
+                .padding(const EdgeInsets.all(16))
                 .width(context.screenWidth - 70)
                 .make(),
           ),

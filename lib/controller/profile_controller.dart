@@ -11,8 +11,6 @@ import 'package:pharmacy/consts/firebase_consts.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:path/path.dart';
 
-import '../consts/consts.dart';
-
 class ProfileController extends GetxController {
   var profileImgPath = "".obs;
   var profileImageLink = "";
@@ -56,8 +54,6 @@ class ProfileController extends GetxController {
 
     await currentUser!.reauthenticateWithCredential(cred).then((value) {
       currentUser!.updatePassword(newpassword);
-    }).catchError((error) {
-      print(error.toString());
-    });
+    }).catchError((error) {});
   }
 }
