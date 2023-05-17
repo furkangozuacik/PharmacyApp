@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/consts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/consts/styles.dart';
@@ -19,7 +18,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       color: lightGrey,
       width: context.screenWidth,
       height: context.screenHeight,
@@ -43,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   Container(
@@ -89,22 +88,6 @@ class HomeScreen extends StatelessWidget {
                         )
                       ]),
                   //2nd slider
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(bottom: 15),
-                    child: Image.asset(barkod),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: featuredProduct.text
-                        .color(darkFontGrey)
-                        .size(22)
-                        .fontFamily(semibold)
-                        .make(),
-                  ),
-                  20.heightBox,
                   VxSwiper.builder(
                       aspectRatio: 16 / 9,
                       autoPlay: true,
@@ -121,16 +104,136 @@ class HomeScreen extends StatelessWidget {
                             .make();
                       }),
 
+                  10.heightBox,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: List.generate(
+                        3,
+                        (index) => homeButtons(
+                              height: context.screenHeight * 0.15,
+                              width: context.screenWidth / 3.5,
+                              icon: index == 0
+                                  ? icTopCategories
+                                  : index == 1
+                                      ? icBrands
+                                      : icTopSeller,
+                              title: index == 0
+                                  ? topCategories
+                                  : index == 1
+                                      ? brand
+                                      : topSellers,
+                            )),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: featuredProduct.text
+                        .color(darkFontGrey)
+                        .size(22)
+                        .fontFamily(semibold)
+                        .make(),
+                  ),
+                  20.heightBox,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                          3,
+                          (index) => Column(
+                                children: [
+                                  featuredButton(
+                                      icon: featuredImages1[index],
+                                      title: featuredTitles1[index]),
+                                  10.heightBox,
+                                  featuredButton(
+                                      icon: featuredImages2[index],
+                                      title: featuredTitles2[index])
+                                ],
+                              )).toList(),
+                    ),
+                  ),
+                  //featured product
+
+                  20.heightBox,
+
+                  Container(
+                    padding: EdgeInsets.all(12),
+                    width: double.infinity,
+                    decoration: BoxDecoration(color: redColor),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          featuredProduct.text.white
+                              .fontFamily(bold)
+                              .size(18)
+                              .make(),
+                          10.heightBox,
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                                children: List.generate(
+                                    6,
+                                    (index) => Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Image.asset(
+                                              imgP1,
+                                              width: 150,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            10.heightBox,
+                                            ",Ağrı Kesici"
+                                                .text
+                                                .fontFamily(semibold)
+                                                .color(darkFontGrey)
+                                                .make(),
+                                            10.heightBox,
+                                            "₺ 20.00"
+                                                .text
+                                                .color(redColor)
+                                                .fontFamily(bold)
+                                                .size(16)
+                                                .make()
+                                          ],
+                                        )
+                                            .box
+                                            .white
+                                            .rounded
+                                            .margin(EdgeInsets.symmetric(
+                                                horizontal: 4))
+                                            .padding(EdgeInsets.all(8))
+                                            .make())),
+                          )
+                        ]),
+                  ),
+                  20.heightBox,
+                  VxSwiper.builder(
+                      aspectRatio: 16 / 9,
+                      autoPlay: true,
+                      height: 150,
+                      enlargeCenterPage: true,
+                      itemCount: secondSliderList.length,
+                      itemBuilder: (context, index) {
+                        return Image.asset(secondSliderList[index],
+                                fit: BoxFit.fitWidth)
+                            .box
+                            .rounded
+                            .clip(Clip.antiAlias)
+                            .margin(const EdgeInsets.symmetric(horizontal: 8))
+                            .make();
+                      }),
+
                   20.heightBox,
                   GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: 6,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 8,
-                          crossAxisSpacing: 8,
-                          mainAxisExtent: 300),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 8,
+                              crossAxisSpacing: 8,
+                              mainAxisExtent: 300),
                       itemBuilder: (context, index) {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +244,7 @@ class HomeScreen extends StatelessWidget {
                               width: 200,
                               fit: BoxFit.cover,
                             ),
-                            Spacer(),
+                            const Spacer(),
                             ",Ağrı Kesici"
                                 .text
                                 .fontFamily(semibold)
@@ -159,8 +262,8 @@ class HomeScreen extends StatelessWidget {
                             .box
                             .white
                             .rounded
-                            .margin(EdgeInsets.symmetric(horizontal: 4))
-                            .padding(EdgeInsets.all(12))
+                            .margin(const EdgeInsets.symmetric(horizontal: 4))
+                            .padding(const EdgeInsets.all(12))
                             .make();
                       })
                 ],

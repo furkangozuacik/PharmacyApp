@@ -1,5 +1,4 @@
 import 'package:pharmacy/consts/colors.dart';
-import 'package:pharmacy/consts/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -19,14 +18,14 @@ Widget customTextField({
         obscureText: isPass,
         controller: controller,
         decoration: InputDecoration(
-            hintStyle: TextStyle(fontFamily: semibold, color: textfieldGrey),
+            hintStyle:const TextStyle(fontFamily: semibold, color: textfieldGrey),
             hintText: hint,
             isDense: true,
             fillColor: lightGrey,
             filled: true,
             border: InputBorder.none,
             focusedBorder:
-                OutlineInputBorder(borderSide: BorderSide(color: redColor))),
+               const OutlineInputBorder(borderSide: BorderSide(color: redColor))),
       ),
       5.heightBox,
     ],

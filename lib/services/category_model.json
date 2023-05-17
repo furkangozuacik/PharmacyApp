@@ -4,8 +4,8 @@
             "name":"Ağrı Kesici",
             "subcategory":[
                 "Reçeteli Ağrı Kesiciler",
-                "Reçetesiz Ağrı Kesiciler"
-
+                "Reçetesiz Ağrı Kesiciler",
+                "Doğal Ağrı Kesiciler"
             ]
 
         },
@@ -29,7 +29,8 @@
             "name":"Kişisel Bakım",
             "subcategory":[
                 "Gargaralar",
-                "Cilt Bakım Losyonu"
+                "Cilt Bakım Losyonu",
+                "Göz Altı Kremleri"
             ]
         },
         {
@@ -41,35 +42,35 @@
             ]
         },
         {
-            "name":"Kremler",
+            "name":"Merhemler",
             "subcategory":[
-                "Merhem",
-                "Yanık Kremleri",
-                "Kas Gevşetici"
+                "Reçeteli Merhem",
+                "Reçetesiz Merhem",
+                "Bitkisel Merhemler"
             ]
         },
         {
-            "name":"Kremler",
+            "name":"Kilo İlaçları",
             "subcategory":[
-                "Merhem",
-                "Yanık Kremleri",
-                "Kas Gevşetici"
+                "Zayıflama İlaçları",
+                "Kilo Alma İlaçları",
+                "Doğal Kilo Dengeleme"
             ]
         },
         {
-            "name":"Kremler",
+            "name":"Vitaminler",
             "subcategory":[
-                "Merhem",
-                "Yanık Kremleri",
-                "Kas Gevşetici"
+                "Esansiyel Vitaminler",
+                "Takviye Vitaminler",
+                "Mineralli Karışım"
             ]
         },
         {
-            "name":"Kremler",
+            "name":"Steroitler",
             "subcategory":[
-                "Merhem",
-                "Yanık Kremleri",
-                "Kas Gevşetici"
+                "Metabolik Steroitler",
+                "Anabolik Steroitler",
+                "Doğal Steroitler"
             ]
         }
     ]

@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                         onPressed: () {}, child: forgetPassword.text.make())),
                 5.heightBox,
                 controller.isloading.value
-                    ? CircularProgressIndicator(
+                    ? const CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation(redColor),
                       )
                     : ourButton(
@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                               .then((value) {
                             if (value != null) {
                               VxToast.show(context, msg: loggedin);
-                              Get.to(() => const Home());
+                              Get.offAll(() => const Home());
                             } else {
                               controller.isloading(false);
                             }
@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                     title: signup,
                     textColor: redColor,
                     onPress: () {
-                      Get.to(() => SignupScreen());
+                      Get.to(() =>const SignupScreen());
                     }).box.width(context.screenWidth - 90).make(),
                 10.heightBox,
                 loginWith.text.color(fontGrey).make(),
@@ -101,7 +101,7 @@ class LoginScreen extends StatelessWidget {
                 .box
                 .white
                 .rounded
-                .padding(EdgeInsets.all(16))
+                .padding(const EdgeInsets.all(16))
                 .width(context.screenWidth - 70)
                 .make(),
           ),

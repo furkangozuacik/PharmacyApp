@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation(redColor),
                 ),
@@ -42,14 +42,14 @@ class ProfileScreen extends StatelessWidget {
                   //edit profile button
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Align(
+                    child: const Align(
                         alignment: Alignment.topRight,
                         child: Icon(
                           Icons.edit,
                           color: whiteColor,
                         )).onTap(() {
                       controller.nameController.text = data["name"];
-                      
+
                       Get.to(() => EditProfileScreen(
                             data: data,
                           ));
@@ -93,7 +93,7 @@ class ProfileScreen extends StatelessWidget {
                                   .signoutMethod(context: context);
                               Get.offAll(() => const LoginScreen());
                             },
-                            child: Text("Çıkış Yap"))
+                            child:const Text("Çıkış Yap"))
                       ],
                     ),
                   ),
@@ -119,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                   ListView.separated(
                           shrinkWrap: true,
                           separatorBuilder: (context, index) {
-                            return Divider(
+                            return const Divider(
                               color: lightGrey,
                             );
                           },
@@ -129,7 +129,6 @@ class ProfileScreen extends StatelessWidget {
                               leading: Image.asset(
                                 profileButtonsIcon[index],
                                 width: 22,
-                                
                               ),
                               title: profileButtonsIcon[index]
                                   .text
@@ -141,8 +140,8 @@ class ProfileScreen extends StatelessWidget {
                       .box
                       .white
                       .rounded
-                      .padding(EdgeInsets.symmetric(horizontal: 16))
-                      .margin(EdgeInsets.all(12))
+                      .padding(const EdgeInsets.symmetric(horizontal: 16))
+                      .margin(const EdgeInsets.all(12))
                       .shadowSm
                       .make()
                       .box
