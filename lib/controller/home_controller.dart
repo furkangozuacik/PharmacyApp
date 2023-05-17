@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
 
@@ -8,6 +9,8 @@ class HomeController extends GetxController {
     getUsername();
     super.onInit();
   }
+
+  var searchController = TextEditingController();
 
   getUsername() async {
     var n = await firestore

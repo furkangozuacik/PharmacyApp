@@ -21,7 +21,11 @@ class SellerChatScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
-        title: "${controller.friendName}".text.fontFamily(semibold).color(darkFontGrey).make(),
+        title: "${controller.friendName}"
+            .text
+            .fontFamily(semibold)
+            .color(darkFontGrey)
+            .make(),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
@@ -38,48 +42,44 @@ class SellerChatScreen extends StatelessWidget {
                         bottomLeft: Radius.circular(20))),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Obx(
-                        () => controller.isLoading.value
-                            ? Center(
-                                child: loadingIndicator(),
-                              )
-                            : Expanded(
-                                child: StreamBuilder(
-                                stream: FireStoreServices.getChatMessages(
-                                    controller.chatDocId.toString()),
-                                builder: (BuildContext context,
-                                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                                  if (snapshot.data!.docs.isEmpty) {
-                                    return Center(
-                                      child: loadingIndicator(),
-                                    );
-                                  } else if (snapshot.data!.docs.isEmpty) {
-                                    return Center(
-                                      child: "Send a message..."
-                                          .text
-                                          .color(darkFontGrey)
-                                          .make(),
-                                    );
-                                  } else {
-                                    return ListView(
-                                      children: snapshot.data!.docs
-                                          .mapIndexed((currentValue, index) {
-                                        var data = snapshot.data!.docs[index];
-                                        return Align(
-                                            alignment:
-                                                data["uid"] == currentUser!.uid
-                                                    ? Alignment.centerRight
-                                                    : Alignment.centerLeft,
-                                            child: senderBubble(data));
-                                      }).toList(),
-                                    );
-                                  }
-                                },
-                              )),
-                      )
-                    ],
+                  child: Obx(
+                    () => controller.isLoading.value
+                        ? Center(
+                            child: loadingIndicator(),
+                          )
+                        : Expanded(
+                            child: StreamBuilder(
+                            stream: FireStoreServices.getChatMessages(
+                                controller.chatDocId.toString()),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (snapshot.data!.docs.isEmpty) {
+                                return Center(
+                                  child: loadingIndicator(),
+                                );
+                              } else if (snapshot.data!.docs.isEmpty) {
+                                return Center(
+                                  child: "Send a message..."
+                                      .text
+                                      .color(darkFontGrey)
+                                      .make(),
+                                );
+                              } else {
+                                return ListView(
+                                  children: snapshot.data!.docs
+                                      .mapIndexed((currentValue, index) {
+                                    var data = snapshot.data!.docs[index];
+                                    return Align(
+                                        alignment:
+                                            data["uid"] == currentUser!.uid
+                                                ? Alignment.centerRight
+                                                : Alignment.centerLeft,
+                                        child: senderBubble(data));
+                                  }).toList(),
+                                );
+                              }
+                            },
+                          )),
                   ),
                 ),
               )

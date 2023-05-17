@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pharmacy/consts/consts.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
 import 'package:pharmacy/controller/home_controller.dart';
 
@@ -15,6 +16,8 @@ class CartController extends GetxController {
 
   var paymentIndex = 0.obs;
   var products = [];
+
+  var placingOrder = false.obs;
   late dynamic productSnapshot;
   calculate(data) {
     for (var i = 0; i < data.length; i++) {
@@ -26,9 +29,11 @@ class CartController extends GetxController {
     paymentIndex.value = index;
   }
 
-  placeMyOrder({required orderPaymentMethod,required totalAmount}) async {
+  placeMyOrder({required orderPaymentMethod, required totalAmount}) async {
+    placingOrder(true);
     await getProductDetails();
     await firestore.collection(ordersCollection).doc().set({
+      "order_code": "233981237",
       "order_by": currentUser!.uid,
       "order_by_name": Get.find<HomeController>().username,
       "order_by_email": currentUser!.email,
@@ -40,12 +45,13 @@ class CartController extends GetxController {
       "shipping_method": "Home Delivery",
       "payment_method": orderPaymentMethod,
       "order_placed": true,
-      "order_confirmed":false,
-      "order_delivered":false,
-      "order_on_delivery":false,
+      "order_confirmed": false,
+      "order_delivered": false,
+      "order_on_delivery": false,
       "total_amount": totalAmount,
-      "orders":FieldValue.arrayUnion(products)
+      "orders": FieldValue.arrayUnion(products)
     });
+    placingOrder(false);
   }
 
   getProductDetails() {
@@ -54,9 +60,17 @@ class CartController extends GetxController {
       products.add({
         "color": productSnapshot[i]["color"],
         "img": productSnapshot[i]["img"],
+        "vendor_id": productSnapshot[i]["vendor_id"],
+        "tprice": productSnapshot[i]["tprice"],
         "qty": productSnapshot[i]["qty"],
         "title": productSnapshot[i]["title"]
       });
+    }
+  }
+
+  clearCart() {
+    for (var i = 0; i < productSnapshot.length; i++) {
+      firestore.collection(cartCollection).doc(productSnapshot[i].id).delete();
     }
   }
 }

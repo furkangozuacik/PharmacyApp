@@ -41,26 +41,6 @@ class CategoryDetails extends StatelessWidget {
                       padding: const EdgeInsets.all(12),
                       child: Column(
                         children: [
-                          SingleChildScrollView(
-                            physics: const BouncingScrollPhysics(),
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                                children: List.generate(
-                                    controller.subcat.length,
-                                    (index) => "${controller.subcat[index]}"
-                                        .text
-                                        .size(12)
-                                        .fontFamily(semibold)
-                                        .color(darkFontGrey)
-                                        .makeCentered()
-                                        .box
-                                        .white
-                                        .rounded
-                                        .size(120, 60)
-                                        .margin(const EdgeInsets.symmetric(
-                                            horizontal: 4))
-                                        .make())),
-                          ),
                           20.heightBox,
                           Expanded(
                               child: Container(

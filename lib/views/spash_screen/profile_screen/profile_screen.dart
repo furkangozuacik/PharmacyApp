@@ -11,8 +11,12 @@ import 'package:pharmacy/controller/auth_controller.dart';
 import 'package:pharmacy/controller/profile_controller.dart';
 import 'package:pharmacy/services/firestore_services.dart';
 import 'package:pharmacy/views/spash_screen/auth_screen/login_screen.dart';
+import 'package:pharmacy/views/spash_screen/chat_screen/messaging_screen.dart';
+import 'package:pharmacy/views/spash_screen/orders_screen/orders_screen.dart';
 import 'package:pharmacy/views/spash_screen/profile_screen/edit_profile_screen.dart';
+import 'package:pharmacy/views/wishlist_screen/wishlist_screen.dart';
 import 'package:pharmacy/widgets_common/bg_widget.dart';
+import 'package:pharmacy/widgets_common/loading_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'components/details_card.dart';
 
@@ -93,29 +97,40 @@ class ProfileScreen extends StatelessWidget {
                                   .signoutMethod(context: context);
                               Get.offAll(() => const LoginScreen());
                             },
-                            child:const Text("Çıkış Yap"))
+                            child: const Text("Çıkış Yap"))
                       ],
                     ),
                   ),
                   20.heightBox,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      detailsCard(
-                          count: data['cart_count'],
-                          title: "in your cart",
-                          width: context.screenWidth / 3.4),
-                      detailsCard(
-                          count: data['wishlist_count'],
-                          title: "in your wishlist",
-                          width: context.screenWidth / 3.4),
-                      detailsCard(
-                          count: data['order_count'],
-                          title: "in your orders",
-                          width: context.screenWidth / 3.4)
-                    ],
-                  ),
-                  //buttons section
+                  FutureBuilder(
+                      future: FireStoreServices.getCounts(),
+                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: loadingIndicator(),
+                          );
+                        } else {
+                          var countData = snapshot.data;
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              detailsCard(
+                                  count: countData[0].toString(),
+                                  title: "in your cart",
+                                  width: context.screenWidth / 3.4),
+                              detailsCard(
+                                  count: countData[1].toString(),
+                                  title: "in your wishlist",
+                                  width: context.screenWidth / 3.4),
+                              detailsCard(
+                                  count: countData[2].toString(),
+                                  title: "in your orders",
+                                  width: context.screenWidth / 3.4)
+                            ],
+                          );
+                        }
+                      }),
+
                   ListView.separated(
                           shrinkWrap: true,
                           separatorBuilder: (context, index) {
@@ -126,11 +141,25 @@ class ProfileScreen extends StatelessWidget {
                           itemCount: profileButtonsList.length,
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
+                              onTap: () {
+                                switch (index) {
+                                  case 0:
+                                    Get.to(() => const OrdersScreen());
+                                    break;
+                                  case 1:
+                                    Get.to(() => const WishlistScreen());
+                                    break;
+                                  case 2:
+                                    Get.to(() => const MessagesScreen());
+                                    break;
+                                  default:
+                                }
+                              },
                               leading: Image.asset(
                                 profileButtonsIcon[index],
                                 width: 22,
                               ),
-                              title: profileButtonsIcon[index]
+                              title: profileButtonsList[index]
                                   .text
                                   .fontFamily(semibold)
                                   .color(darkFontGrey)

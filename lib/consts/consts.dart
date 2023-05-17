@@ -33,11 +33,11 @@ const topSellers = "Top Sellers";
 const brand = "Brand";
 const topCategories = "Top Categories";
 const womenDress = "Ağrı Kesici";
-const girlsWatches = "Girls Watches";
-const mobilePhone = "Mobile Phone";
-const boysGlasses = "Boys Glasses";
-const tShirts = "TShirts";
-const girllsDress = "Girls Dress";
+const girlsWatches = "Losyonlar";
+const mobilePhone = "Kilo İlaçları";
+const boysGlasses = "Kremler";
+const tShirts = "Vitaminler";
+const girllsDress = "Doğal Tedavi";
 const featuredProduct = "Featured Product";
 const featuredCategories = "Featured Categories";
 
