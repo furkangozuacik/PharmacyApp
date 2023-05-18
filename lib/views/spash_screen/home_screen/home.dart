@@ -2,6 +2,7 @@ import 'package:pharmacy/consts/consts.dart';
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/home_controller.dart';
+import 'package:pharmacy/views/barcode_screen/barcode_screen.dart';
 import 'package:pharmacy/views/near_pharmacies_screen/pharmacies_screen.dart';
 import 'package:pharmacy/views/spash_screen/cart_screen/cart_screen.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/category_screen.dart';
@@ -59,7 +60,13 @@ class Home extends StatelessWidget {
             Icons.location_searching,
             size: 32,
           ),
-          label: account)
+          label: "Map"),
+      BottomNavigationBarItem(
+          icon: Icon(
+            Icons.qr_code,
+            size: 32,
+          ),
+          label: "ScanQR"),
     ];
 
     var navBody = [
@@ -68,7 +75,8 @@ class Home extends StatelessWidget {
       const ChatScreen(),
       const CartScreen(),
       const ProfileScreen(),
-      NearPharmaciesScreen()
+      NearPharmaciesScreen(),
+      QRScanner()
     ];
     return WillPopScope(
       onWillPop: () async {

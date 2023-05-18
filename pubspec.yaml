@@ -26,7 +26,9 @@ dependencies:
   http: ^0.13.5
   barcode_scanner: ^3.0.2
   flutter_inappwebview: ^5.7.2+3
-  
+  mobile_scanner: ^2.1.0
+  qr_flutter: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
