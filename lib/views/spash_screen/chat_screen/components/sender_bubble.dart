@@ -8,10 +8,12 @@ import "package:intl/intl.dart" as intl;
 Widget senderBubble(DocumentSnapshot data) {
   var t =
       data["created_on"] == null ? DateTime.now() : data["created_on"].toDate();
-  var time = intl.DateFormat("h:mma").format(t);
+  var localTime = t.toLocal();
+  var time = intl.DateFormat("h:mma").format(localTime);
+
   return Directionality(
     textDirection:
-        data["uid"] == currentUser!.uid ? TextDirection.rtl : TextDirection.ltr,
+        data["uid"] == currentUser!.uid ? TextDirection.ltr : TextDirection.rtl,
     child: Container(
       margin: EdgeInsets.only(bottom: 8),
       padding: EdgeInsets.all(8),
@@ -26,7 +28,7 @@ Widget senderBubble(DocumentSnapshot data) {
         children: [
           "${data['msg']}".text.white.size(16).make(),
           10.heightBox,
-          "11:45".text.color(whiteColor.withOpacity(0.5)).make()
+          time.text.color(whiteColor.withOpacity(0.5)).make()
         ],
       ),
     ),

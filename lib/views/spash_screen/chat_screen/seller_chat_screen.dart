@@ -30,61 +30,44 @@ class SellerChatScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(children: [
-          Expanded(
-              child: Container(
-            color: Colors.white,
-            child: ListView(children: [
-              Container(
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                        bottomLeft: Radius.circular(20))),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Obx(
-                    () => controller.isLoading.value
-                        ? Center(
-                            child: loadingIndicator(),
-                          )
-                        : Expanded(
-                            child: StreamBuilder(
-                            stream: FireStoreServices.getChatMessages(
-                                controller.chatDocId.toString()),
-                            builder: (BuildContext context,
-                                AsyncSnapshot<QuerySnapshot> snapshot) {
-                              if (snapshot.data!.docs.isEmpty) {
-                                return Center(
-                                  child: loadingIndicator(),
-                                );
-                              } else if (snapshot.data!.docs.isEmpty) {
-                                return Center(
-                                  child: "Send a message..."
-                                      .text
-                                      .color(darkFontGrey)
-                                      .make(),
-                                );
-                              } else {
-                                return ListView(
-                                  children: snapshot.data!.docs
-                                      .mapIndexed((currentValue, index) {
-                                    var data = snapshot.data!.docs[index];
-                                    return Align(
-                                        alignment:
-                                            data["uid"] == currentUser!.uid
-                                                ? Alignment.centerRight
-                                                : Alignment.centerLeft,
-                                        child: senderBubble(data));
-                                  }).toList(),
-                                );
-                              }
-                            },
-                          )),
-                  ),
-                ),
-              )
-            ]),
-          )),
+          Obx(
+            () => controller.isLoading.value
+                ? Center(
+                    child: loadingIndicator(),
+                  )
+                : Expanded(
+                    child: StreamBuilder(
+                    stream: FireStoreServices.getChatMessages(
+                        controller.chatDocId.toString()),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.data!.docs.isEmpty) {
+                        return Center(
+                          child: loadingIndicator(),
+                        );
+                      } else if (snapshot.data!.docs.isEmpty) {
+                        return Center(
+                          child: "Send a message..."
+                              .text
+                              .color(darkFontGrey)
+                              .make(),
+                        );
+                      } else {
+                        return ListView(
+                          children: snapshot.data!.docs
+                              .mapIndexed((currentValue, index) {
+                            var data = snapshot.data!.docs[index];
+                            return Align(
+                                alignment: data["uid"] == currentUser!.uid
+                                    ? Alignment.centerRight
+                                    : Alignment.centerLeft,
+                                child: senderBubble(data));
+                          }).toList(),
+                        );
+                      }
+                    },
+                  )),
+          ),
           10.heightBox,
           Row(
             children: [

@@ -18,7 +18,7 @@ class OrdersDetails extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
-          physics:const BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(children: [
             orderStatus(
                 color: redColor,
@@ -111,7 +111,7 @@ class OrdersDetails extends StatelessWidget {
             ListView(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              children: List.generate(data["order"].length, (index) {
+              children: List.generate(data["orders"].length, (index) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -134,7 +134,6 @@ class OrdersDetails extends StatelessWidget {
               }).toList(),
             ).box.outerShadowMd.white.margin(EdgeInsets.only(bottom: 4)).make(),
             20.heightBox,
-           
           ]),
         ),
       ),

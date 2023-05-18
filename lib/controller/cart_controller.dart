@@ -32,6 +32,7 @@ class CartController extends GetxController {
   placeMyOrder({required orderPaymentMethod, required totalAmount}) async {
     placingOrder(true);
     await getProductDetails();
+
     await firestore.collection(ordersCollection).doc().set({
       "order_code": "233981237",
       "order_by": currentUser!.uid,
@@ -45,6 +46,7 @@ class CartController extends GetxController {
       "shipping_method": "Home Delivery",
       "payment_method": orderPaymentMethod,
       "order_placed": true,
+      "order_date": FieldValue.serverTimestamp(),
       "order_confirmed": false,
       "order_delivered": false,
       "order_on_delivery": false,
