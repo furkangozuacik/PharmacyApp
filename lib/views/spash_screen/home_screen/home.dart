@@ -2,6 +2,7 @@ import 'package:pharmacy/consts/consts.dart';
 import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/home_controller.dart';
+import 'package:pharmacy/views/near_pharmacies_screen/pharmacies_screen.dart';
 import 'package:pharmacy/views/spash_screen/cart_screen/cart_screen.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/category_screen.dart';
 import 'package:pharmacy/views/spash_screen/home_screen/home_screen.dart';
@@ -38,7 +39,7 @@ class Home extends StatelessWidget {
       BottomNavigationBarItem(
           icon: Image.asset(
             icAi,
-            width: 26,
+            width: 46,
           ),
           label: ai),
       BottomNavigationBarItem(
@@ -52,6 +53,12 @@ class Home extends StatelessWidget {
             icProfile,
             width: 26,
           ),
+          label: account),
+      BottomNavigationBarItem(
+          icon: Icon(
+            Icons.location_searching,
+            size: 32,
+          ),
           label: account)
     ];
 
@@ -60,11 +67,15 @@ class Home extends StatelessWidget {
       const CategoryScreen(),
       const ChatScreen(),
       const CartScreen(),
-      const ProfileScreen()
+      const ProfileScreen(),
+      NearPharmaciesScreen()
     ];
     return WillPopScope(
       onWillPop: () async {
-        showDialog(barrierDismissible:false ,context: context, builder: (context) => exitDialog(context));
+        showDialog(
+            barrierDismissible: false,
+            context: context,
+            builder: (context) => exitDialog(context));
         return false;
       },
       child: Scaffold(
