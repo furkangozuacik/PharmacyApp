@@ -18,33 +18,95 @@ class _NearPharmaciesScreenState extends State<NearPharmaciesScreen> {
 
   double progress = 0;
   var urlController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    refreshController = PullToRefreshController(
+      onRefresh: () {
+        webViewController!.reload();
+      },
+      options: PullToRefreshOptions(
+        color: Colors.white,
+        backgroundColor: Colors.black87,
+      ),
+    );
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      urlController.text = "Yakındaki Eczaneler";
+      Future.delayed(Duration(milliseconds: 300), () {
+        _submitUrl(); // Otomatik olarak URL'yi yükle
+      });
+    });
+  }
+
+  void _submitUrl() {
+    String value = urlController.text;
+    url = Uri.parse(value);
+    if (url.scheme.isEmpty) {
+      url = Uri.parse("${initialUrl}search?q=$value");
+    }
+    webViewController?.loadUrl(urlRequest: URLRequest(url: url));
+  }
 
   @override
   Widget build(BuildContext context) {
+    urlController.text = "Yakındaki Eczaneler";
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () async {
+            if (await webViewController!.canGoBack()) {
+              webViewController!.goBack();
+            }
+          },
+          icon: const Icon(Icons.arrow_back_ios),
         ),
         title: Container(
-          padding: EdgeInsets.symmetric(horizontal: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 4),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12), color: Colors.white),
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.white,
+          ),
           child: TextField(
-              controller: urlController,
-              textAlignVertical: TextAlignVertical.center,
-              decoration: InputDecoration(
-                  hintText: "Search...", prefixIcon: Icon(Icons.search))),
+            onEditingComplete: _submitUrl,
+            onSubmitted: (_) => _submitUrl(),
+            controller: urlController,
+            textAlignVertical: TextAlignVertical.center,
+            decoration: const InputDecoration(
+              hintText: "Search...",
+              prefixIcon: Icon(Icons.search),
+            ),
+          ),
         ),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.refresh))],
+        actions: [
+          IconButton(
+            onPressed: () {
+              webViewController!.reload();
+            },
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
       ),
-      body: Column(children: [
-        Expanded(
+      body: Column(
+        children: [
+          Expanded(
             child: InAppWebView(
-          initialUrlRequest: URLRequest(url: Uri.parse(initialUrl)),
-        ))
-      ]),
+              onLoadStart: (controller, url) {
+                var v = url.toString();
+                setState(() {
+                  urlController.text = v;
+                });
+              },
+              onLoadStop: (controller, url) {
+                refreshController!.endRefreshing();
+              },
+              pullToRefreshController: refreshController,
+              onWebViewCreated: (controller) => webViewController = controller,
+              initialUrlRequest: URLRequest(url: Uri.parse(initialUrl)),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
