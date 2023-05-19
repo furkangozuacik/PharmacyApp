@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:pharmacy/views/barcode_screen/barcode_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class ResultScreen extends StatelessWidget {
-  const ResultScreen({super.key});
+  final String code;
+  final Function() closeScreen;
+
+  const ResultScreen(
+      {super.key, required this.code, required this.closeScreen});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              closeScreen();
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Colors.black87,
+            )),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "QR Scanner ",
           style: TextStyle(
               color: Colors.black87,
@@ -22,32 +36,31 @@ class ResultScreen extends StatelessWidget {
               letterSpacing: 1),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
+      body: Container(
+        alignment: Alignment.center,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             QrImage(
-              data: "",
+              data: code,
               size: 150,
               version: QrVersions.auto,
             ),
-            Text(
+            const Text(
               "Scanned result",
               style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1),
+                  color: Colors.black87, fontSize: 16, letterSpacing: 1),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
-              "RESULT",
+              code,
+              textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black87, letterSpacing: 1, fontSize: 16),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             SizedBox(
@@ -55,8 +68,10 @@ class ResultScreen extends StatelessWidget {
               height: 48,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                onPressed: () {},
-                child: Text(
+                onPressed: () {
+                  Clipboard.setData(ClipboardData(text: code));
+                },
+                child: const Text(
                   "Copy",
                   style: TextStyle(
                       color: Colors.black87, letterSpacing: 1, fontSize: 16),

@@ -1,20 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:pharmacy/views/barcode_screen/overlay.dart';
+import 'package:pharmacy/views/barcode_screen/result_screen.dart';
 
 const bgColor = Color(0xfffafafa);
 
-class QRScanner extends StatelessWidget {
+class QRScanner extends StatefulWidget {
   const QRScanner({super.key});
 
   @override
+  State<QRScanner> createState() => _QRScannerState();
+}
+
+class _QRScannerState extends State<QRScanner> {
+  bool isScanCompleted = false;
+  bool isFlashOn = false;
+  bool isFrontCamera = false;
+  MobileScannerController controller = MobileScannerController();
+
+  void closeScreen() {
+    isScanCompleted = false;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    setState(() {
+      controller.switchCamera();
+    });
     return Scaffold(
       backgroundColor: bgColor,
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  isFlashOn = !isFlashOn;
+                });
+
+                controller.toggleTorch();
+              },
+              icon: Icon(Icons.flash_on,
+                  color: isFlashOn ? Colors.blue : Colors.grey)),
+        ],
+        iconTheme: const IconThemeData(color: Colors.black87),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "QR Scanner ",
           style: TextStyle(
               color: Colors.black87,
@@ -25,14 +55,14 @@ class QRScanner extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Expanded(
                 child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     "Place the QR code in the area",
                     style: TextStyle(
@@ -53,14 +83,31 @@ class QRScanner extends StatelessWidget {
             )),
             Expanded(
                 flex: 4,
-                child: MobileScanner(
-                  allowDuplicates: true,
-                  onDetect: (barcode, args) {},
+                child: Stack(
+                  children: [
+                    MobileScanner(
+                      allowDuplicates: true,
+                      onDetect: (barcode, args) {
+                        if (!isScanCompleted) {
+                          String code = barcode.rawValue ?? "---";
+                          isScanCompleted = true;
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultScreen(
+                                        closeScreen: closeScreen,
+                                        code: code,
+                                      )));
+                        }
+                      },
+                    ),
+                    const QRScannerOverlay(overlayColour: bgColor),
+                  ],
                 )),
             Expanded(
                 child: Container(
               alignment: Alignment.center,
-              child: Text(
+              child: const Text(
                 "Developed by ES",
                 style: TextStyle(
                     color: Colors.black87,
