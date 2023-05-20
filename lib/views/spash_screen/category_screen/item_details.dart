@@ -14,7 +14,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 class ItemDetails extends StatelessWidget {
   final String? title;
-  const ItemDetails({super.key, required this.title, this.data});
+  const ItemDetails({super.key, this.title, this.data});
   final dynamic data;
 
   @override

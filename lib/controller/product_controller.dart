@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
 import "package:pharmacy/models/category_model.dart";
 import 'package:flutter/services.dart';
+import 'package:pharmacy/views/spash_screen/category_screen/item_details.dart';
+import 'package:pharmacy/views/wishlist_screen/wishlist_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ProductController extends GetxController {
@@ -10,8 +13,34 @@ class ProductController extends GetxController {
   var quantity = 0.obs;
   var colorIndex = 0.obs;
   var totalPrice = 0.obs;
-
   var isFav = false.obs;
+  var barcodeId = "";
+  var scannedBarcode = "";
+  void handleBarcodeScan(String scannedBarcode) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    QuerySnapshot querySnapshot = await firestore
+        .collection('products')
+        .where('p_barcode', isEqualTo: scannedBarcode)
+        .limit(1)
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      // Barkod eşleşen ürün bulundu
+      barcodeId = querySnapshot.docs.first['p_barcode'] ?? "1005632parol";
+
+      Get.to(() => WishlistScreen());
+
+      print('Barcode ID: $barcodeId');
+
+      // İstediğiniz işlemi gerçekleştirin
+    } else {
+      // Barkod eşleşen ürün bulunamadı
+
+      print("else içine girdik");
+      // İstediğiniz işlemi gerçekleştirin veya hata durumunu yönetin
+    }
+  }
 
   getSubCategories(title) async {
     subcat.clear();
@@ -45,14 +74,15 @@ class ProductController extends GetxController {
     totalPrice.value = price * quantity.value;
   }
 
-  addToCart({title, img, sellername, color, qty, tprice, context,vendorID}) async {
+  addToCart(
+      {title, img, sellername, color, qty, tprice, context, vendorID}) async {
     await firestore.collection(cartCollection).doc().set({
       "title": title,
       "img": img,
       "sellername": sellername,
       "color": color,
       "qty": qty,
-      "vendor_id":vendorID,
+      "vendor_id": vendorID,
       "tprice": tprice,
       "added_by": currentUser!.uid
     }).catchError((error) {
@@ -66,16 +96,15 @@ class ProductController extends GetxController {
     colorIndex.value = 0;
   }
 
-  addToWishList(docId,context) async {
+  addToWishList(docId, context) async {
     await firestore.collection(productsCollection).doc(docId).set({
       "p_wishlist": FieldValue.arrayUnion([currentUser!.uid])
     }, SetOptions(merge: true));
     isFav(true);
-        VxToast.show(context, msg: "Added favorite");
-
+    VxToast.show(context, msg: "Added favorite");
   }
 
-  removeFromWishList(docId,context) async {
+  removeFromWishList(docId, context) async {
     await firestore.collection(productsCollection).doc(docId).set({
       "p_wishlist": FieldValue.arrayRemove([currentUser!.uid])
     }, SetOptions(merge: true));

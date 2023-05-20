@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:pharmacy/controller/product_controller.dart';
 import 'package:pharmacy/views/barcode_screen/overlay.dart';
 import 'package:pharmacy/views/barcode_screen/result_screen.dart';
 
@@ -13,9 +15,10 @@ class QRScanner extends StatefulWidget {
 }
 
 class _QRScannerState extends State<QRScanner> {
+  var barcodeController = Get.put(ProductController());
+
   bool isScanCompleted = false;
   bool isFlashOn = false;
-  bool isFrontCamera = false;
   MobileScannerController controller = MobileScannerController();
 
   void closeScreen() {
@@ -82,28 +85,21 @@ class _QRScannerState extends State<QRScanner> {
               ),
             )),
             Expanded(
-                flex: 4,
-                child: Stack(
-                  children: [
-                    MobileScanner(
-                      allowDuplicates: true,
-                      onDetect: (barcode, args) {
-                        if (!isScanCompleted) {
-                          String code = barcode.rawValue ?? "---";
-                          isScanCompleted = true;
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ResultScreen(
-                                        closeScreen: closeScreen,
-                                        code: code,
-                                      )));
-                        }
-                      },
-                    ),
-                    const QRScannerOverlay(overlayColour: bgColor),
-                  ],
-                )),
+              flex: 4,
+              child: Stack(
+                children: [
+                  MobileScanner(
+                    allowDuplicates: true,
+                    onDetect: (barcode, args) {
+                      barcodeController.scannedBarcode = barcode.rawValue ?? "";
+                      barcodeController
+                          .handleBarcodeScan(barcodeController.scannedBarcode);
+                    },
+                  ),
+                  const QRScannerOverlay(overlayColour: bgColor),
+                ],
+              ),
+            ),
             Expanded(
                 child: Container(
               alignment: Alignment.center,

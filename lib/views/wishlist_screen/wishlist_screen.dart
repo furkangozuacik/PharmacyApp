@@ -18,8 +18,11 @@ class WishlistScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: AppBar(
-        title:
-            "My Wishlist".text.color(darkFontGrey).fontFamily(semibold).make(),
+        title: "My Prescription"
+            .text
+            .color(darkFontGrey)
+            .fontFamily(semibold)
+            .make(),
       ),
       body: StreamBuilder(
           stream: FireStoreServices.getWishlists(),

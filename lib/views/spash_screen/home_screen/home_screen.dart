@@ -23,7 +23,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<HomeController>();
-
     return Container(
       padding: const EdgeInsets.all(12),
       color: lightGrey,

@@ -44,6 +44,6 @@ const video = "video",
 
 //profile strings
 
-const wishlist = "My Wishlist", orders = "My Orders", message = "Messages";
+const wishlist = "My Prescriptions", orders = "My Orders", message = "Messages";
 
 const paypal = "Paypal", stripe = "Stripe", cod = "Cash on delivery";
