@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pharmacy/consts/consts.dart';
+import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/auth_controller.dart';
@@ -79,23 +82,9 @@ class LoginScreen extends StatelessWidget {
                     title: signup,
                     textColor: redColor,
                     onPress: () {
-                      Get.to(() =>const SignupScreen());
+                      Get.to(() => const SignupScreen());
                     }).box.width(context.screenWidth - 90).make(),
                 10.heightBox,
-                loginWith.text.color(fontGrey).make(),
-                5.heightBox,
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                        3,
-                        (index) => CircleAvatar(
-                              backgroundColor: lightGrey,
-                              radius: 25,
-                              child: Image.asset(
-                                socialIconList[index],
-                                width: 30,
-                              ),
-                            )))
               ],
             )
                 .box
@@ -108,5 +97,19 @@ class LoginScreen extends StatelessWidget {
         ]),
       ),
     ));
+  }
+
+  signInWithGoogle() async {
+    GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+
+    print(userCredential.user?.displayName);
   }
 }

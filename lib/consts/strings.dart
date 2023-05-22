@@ -24,14 +24,14 @@ const home = "Home",
     cart = "Cart",
     account = "Account";
 const womenClothing = "Ağrı Kesici",
-    menClothingFashion = "Kremler",
-    compAccess = "Doğal Tedavi",
-    automobile = "Kişisel Bakım",
-    kidtoys = "Losyonlar",
-    sports = "Merhemler",
-    jewelery = "Kilo İlaçları",
-    cellphone = "Vitaminler",
-    furniture = "Steroitler";
+    kremler = "Kremler",
+    dogalTedavi = "Doğal Tedavi",
+    kisiselBakim = "Kişisel Bakım",
+    losyonlar = "Losyonlar",
+    merhemler = "Merhemler",
+    kilo = "Kilo İlaçları",
+    vitamin = "Vitaminler",
+    steroits = "Steroitler";
 
 //item details strings
 
@@ -44,6 +44,6 @@ const video = "video",
 
 //profile strings
 
-const wishlist = "My Prescriptions", orders = "My Orders", message = "Messages";
+const presctiptions = "My Prescriptions", orders = "My Orders", message = "Messages";
 
-const paypal = "Paypal", stripe = "Stripe", cod = "Cash on delivery";
+const yapikredi = "Yapıkredi", halkbank = "Halkbank", nakit = "Nakit";

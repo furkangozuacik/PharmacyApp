@@ -7,8 +7,12 @@ import 'package:pharmacy/consts/images.dart';
 import 'package:pharmacy/consts/lists.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/home_controller.dart';
+import 'package:pharmacy/controller/product_controller.dart';
 import 'package:pharmacy/services/firestore_services.dart';
+import 'package:pharmacy/views/barcode_screen/barcode_screen.dart';
+import 'package:pharmacy/views/near_pharmacies_screen/pharmacies_screen.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/item_details.dart';
+import 'package:pharmacy/views/spash_screen/chatscreen.dart';
 import 'package:pharmacy/views/spash_screen/home_screen/components/featured_button.dart';
 import 'package:pharmacy/views/spash_screen/home_screen/search_screen.dart';
 import 'package:pharmacy/widgets_common/home_buttons.dart';
@@ -23,6 +27,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<HomeController>();
+    var catController = Get.put(ProductController());
     return Container(
       padding: const EdgeInsets.all(12),
       color: lightGrey,
@@ -63,23 +68,35 @@ class HomeScreen extends StatelessWidget {
                   VxSwiper.builder(
                       aspectRatio: 16 / 9,
                       autoPlay: true,
-                      height: 150,
+                      height: 250,
                       enlargeCenterPage: true,
                       itemCount: secondSliderList.length,
                       itemBuilder: (context, index) {
-                        return Image.asset(secondSliderList[index],
-                                fit: BoxFit.fitWidth)
-                            .box
-                            .rounded
-                            .clip(Clip.antiAlias)
-                            .margin(const EdgeInsets.symmetric(horizontal: 8))
-                            .make();
+                        return GestureDetector(
+                          onTap: () {
+                            switch (index) {
+                              case 1:
+                                Get.to(() => QRScanner());
+                                break;
+                              case 2:
+                                Get.to(() => NearPharmaciesScreen());
+                                break;
+                              case 3:
+                                Get.to(() => ChatScreen());
+                                break;
+                              default:
+                            }
+                          },
+                          child: Image.asset(secondSliderList[index],
+                                  fit: BoxFit.fitWidth)
+                              .box
+                              .rounded
+                              .clip(Clip.antiAlias)
+                              .margin(const EdgeInsets.symmetric(horizontal: 8))
+                              .make(),
+                        );
                       }),
 
-                  10.heightBox,
-
-                  //featured categories
-                  20.heightBox,
                   Align(
                     alignment: Alignment.centerLeft,
                     child: featuredCategories.text

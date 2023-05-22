@@ -3,29 +3,28 @@ import 'package:pharmacy/consts/strings.dart';
 
 import 'images.dart';
 
-const socialIconList = [icFacebookLogo, icGoogleLogo, icTwitterLogo];
+const kilo = "Kilo İlaçları";
+const kremler = "Kremler";
 
-const slidersList = [imgSlider1, imgSlider2, imgSlider3, imgSlider4];
-
-const secondSliderList = [imgSs1, imgSs2, imgSs3, imgSs4];
+const secondSliderList = [imgSs1, imgSs2, imgSs3];
 
 const featuredImages1 = [imgS1, imgS2, imgS3];
 
 const featuredImages2 = [imgS4, imgS5, imgS6];
 
-const featuredTitles1 = [womenDress, girllsDress, girlsWatches];
-const featuredTitles2 = [boysGlasses, mobilePhone, tShirts];
+const featuredTitles1 = [agriKesici, dogalTedavi, losyonlar];
+const featuredTitles2 = [kremler, kilo, vitamins];
 
 const categoriesList = [
-  womenDress,
-  menClothingFashion,
-  compAccess,
-  automobile,
-  kidtoys,
-  sports,
-  jewelery,
-  cellphone,
-  furniture
+  agriKesici,
+  kremler,
+  dogalTedavi,
+  kisiselBakim,
+  losyonlar,
+  merhemler,
+  kilo,
+  vitamin,
+  steroits
 ];
 const categoryImages = [
   imgFc1,
@@ -41,10 +40,10 @@ const categoryImages = [
 
 const itemDetailButtonList = [video, reviews, returnpolicy, supportPolicy];
 
-const profileButtonsList = [orders, wishlist, message];
+const profileButtonsList = [orders, presctiptions, message];
 
 const profileButtonsIcon = [icOrder, icOrders, icMessages];
 
-const paymentMethodsImg = [imgPaypal, imgStripe, imgCod];
+const paymentMethodsImg = [imgYapikredi, imgHalkbank, imgNakit];
 
-const paymentMethods = [paypal, stripe, cod];
+const paymentMethods = [yapikredi, halkbank, nakit];

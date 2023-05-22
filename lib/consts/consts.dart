@@ -32,12 +32,8 @@ const flashSale = "Flash Sale";
 const topSellers = "Top Sellers";
 const brand = "Brand";
 const topCategories = "Top Categories";
-const womenDress = "Ağrı Kesici";
-const girlsWatches = "Losyonlar";
-const mobilePhone = "Kilo İlaçları";
-const boysGlasses = "Kremler";
-const tShirts = "Vitaminler";
-const girllsDress = "Doğal Tedavi";
+const agriKesici = "Ağrı Kesici";
+const vitamins = "Vitaminler";
 const featuredProduct = "Featured Product";
 const featuredCategories = "Featured Categories";
 

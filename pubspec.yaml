@@ -28,6 +28,7 @@ dependencies:
   flutter_inappwebview: ^5.7.2+3
   mobile_scanner: ^2.1.0
   qr_flutter: any
+  google_sign_in: ^5.4.2
 
 dev_dependencies:
   flutter_test:

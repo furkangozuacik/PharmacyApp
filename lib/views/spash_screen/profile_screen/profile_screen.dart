@@ -120,7 +120,7 @@ class ProfileScreen extends StatelessWidget {
                                   width: context.screenWidth / 3.4),
                               detailsCard(
                                   count: countData[1].toString(),
-                                  title: "in your wishlist",
+                                  title: "presctiptions",
                                   width: context.screenWidth / 3.4),
                               detailsCard(
                                   count: countData[2].toString(),

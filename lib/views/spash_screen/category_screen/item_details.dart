@@ -158,48 +158,6 @@ class ItemDetails extends StatelessWidget {
                           Obx(
                             () => Column(
                               children: [
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 100,
-                                      child: "color:"
-                                          .text
-                                          .color(textfieldGrey)
-                                          .make(),
-                                    ),
-                                    Row(
-                                      children: List.generate(
-                                          data['p_colors'].length,
-                                          (index) => Stack(
-                                                alignment: Alignment.center,
-                                                children: [
-                                                  VxBox()
-                                                      .size(40, 40)
-                                                      .roundedFull
-                                                      .color(Color(
-                                                          data['p_colors']
-                                                              [index]))
-                                                      .margin(const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 6))
-                                                      .make()
-                                                      .onTap(() {
-                                                    controller.changeColorIndex(
-                                                        index);
-                                                  }),
-                                                  Visibility(
-                                                      visible: index ==
-                                                          controller
-                                                              .colorIndex.value,
-                                                      child: const Icon(
-                                                          Icons.done,
-                                                          color: Colors.white))
-                                                ],
-                                              )),
-                                    )
-                                  ],
-                                ).box.padding(const EdgeInsets.all(8)).make(),
-
                                 //quantity section
 
                                 Row(
