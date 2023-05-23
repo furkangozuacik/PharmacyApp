@@ -1,5 +1,4 @@
 import 'package:pharmacy/consts/firebase_consts.dart';
-import 'package:pharmacy/consts/strings.dart';
 
 class FireStoreServices {
   //get users data

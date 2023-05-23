@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
 import 'package:velocity_x/velocity_x.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 class ProfileController extends GetxController {

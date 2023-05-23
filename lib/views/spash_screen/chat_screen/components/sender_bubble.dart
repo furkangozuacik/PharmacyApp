@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pharmacy/consts/colors.dart';
@@ -15,11 +17,11 @@ Widget senderBubble(DocumentSnapshot data) {
     textDirection:
         data["uid"] == currentUser!.uid ? TextDirection.ltr : TextDirection.rtl,
     child: Container(
-      margin: EdgeInsets.only(bottom: 8),
-      padding: EdgeInsets.all(8),
+      margin:const EdgeInsets.only(bottom: 8),
+      padding:const EdgeInsets.all(8),
       decoration: BoxDecoration(
           color: data["uid"] == currentUser!.uid ? redColor : darkFontGrey,
-          borderRadius: BorderRadius.only(
+          borderRadius:const BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
               bottomLeft: Radius.circular(20))),

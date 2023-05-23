@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:pharmacy/views/barcode_screen/barcode_screen.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -22,7 +21,7 @@ class ResultScreen extends StatelessWidget {
               closeScreen();
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon:const Icon(
               Icons.arrow_back_ios_new_rounded,
               color: Colors.black87,
             )),
@@ -57,7 +56,7 @@ class ResultScreen extends StatelessWidget {
             Text(
               code,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style:const TextStyle(
                   color: Colors.black87, letterSpacing: 1, fontSize: 16),
             ),
             const SizedBox(

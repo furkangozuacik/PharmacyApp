@@ -1,4 +1,3 @@
-
 import "package:flutter/widgets.dart";
 import "package:pharmacy/consts/images.dart";
 import "package:velocity_x/velocity_x.dart";

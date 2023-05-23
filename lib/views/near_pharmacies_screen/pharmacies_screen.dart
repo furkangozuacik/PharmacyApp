@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class NearPharmaciesScreen extends StatefulWidget {
@@ -13,6 +12,7 @@ class NearPharmaciesScreen extends StatefulWidget {
 class _NearPharmaciesScreenState extends State<NearPharmaciesScreen> {
   InAppWebViewController? webViewController;
   PullToRefreshController? refreshController;
+  // ignore: prefer_typing_uninitialized_variables
   late var url;
   var initialUrl = "https://www.google.com/";
 
@@ -30,9 +30,9 @@ class _NearPharmaciesScreenState extends State<NearPharmaciesScreen> {
         backgroundColor: Colors.black87,
       ),
     );
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       urlController.text = "Yakındaki Eczaneler";
-      Future.delayed(Duration(milliseconds: 300), () {
+      Future.delayed(const Duration(milliseconds: 300), () {
         _submitUrl(); // Otomatik olarak URL'yi yükle
       });
     });

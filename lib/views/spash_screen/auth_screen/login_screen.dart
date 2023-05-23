@@ -1,8 +1,9 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pharmacy/consts/consts.dart';
-import 'package:pharmacy/consts/images.dart';
-import 'package:pharmacy/consts/lists.dart';
+
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/auth_controller.dart';
 import 'package:pharmacy/views/spash_screen/applogo_widget.dart';
@@ -110,6 +111,5 @@ class LoginScreen extends StatelessWidget {
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
 
-    print(userCredential.user?.displayName);
   }
 }

@@ -1,6 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/lists.dart';
@@ -48,7 +49,7 @@ class PaymentMethods extends StatelessWidget {
               .make(),
         ),
         body: Padding(
-          padding: EdgeInsets.all(12),
+          padding:const EdgeInsets.all(12),
           child: Obx(
             () => Column(
               children: List.generate(paymentMethodsImg.length, (index) {
@@ -65,7 +66,7 @@ class PaymentMethods extends StatelessWidget {
                                 ? redColor
                                 : Colors.transparent,
                             width: 4)),
-                    margin: EdgeInsets.only(bottom: 8),
+                    margin:const EdgeInsets.only(bottom: 8),
                     child: Stack(
                       alignment: Alignment.topRight,
                       children: [

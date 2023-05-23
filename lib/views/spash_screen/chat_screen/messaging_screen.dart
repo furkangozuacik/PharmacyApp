@@ -5,7 +5,6 @@ import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/services/firestore_services.dart';
 import 'package:pharmacy/views/spash_screen/chat_screen/seller_chat_screen.dart';
-import 'package:pharmacy/views/spash_screen/chatscreen.dart';
 import 'package:pharmacy/widgets_common/loading_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -40,7 +39,7 @@ class MessagesScreen extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return Card(
                               child: ListTile(
-                                leading: CircleAvatar(
+                                leading:const CircleAvatar(
                                   backgroundColor: redColor,
                                   child: Icon(
                                     Icons.person,
@@ -48,7 +47,7 @@ class MessagesScreen extends StatelessWidget {
                                   ),
                                 ),
                                 onTap: () {
-                                  Get.to(() => SellerChatScreen(), arguments: [
+                                  Get.to(() =>const SellerChatScreen(), arguments: [
                                     data[index]["friend_name"],
                                     data[index]["toId"]
                                   ]);

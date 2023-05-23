@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
 import "package:pharmacy/models/category_model.dart";
 import 'package:flutter/services.dart';
-import 'package:pharmacy/views/spash_screen/category_screen/item_details.dart';
 import 'package:pharmacy/views/wishlist_screen/wishlist_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -29,15 +27,13 @@ class ProductController extends GetxController {
       // Barkod eşleşen ürün bulundu
       barcodeId = querySnapshot.docs.first['p_barcode'] ?? "1005632parol";
 
-      Get.to(() => WishlistScreen());
+      Get.to(() =>const WishlistScreen());
 
-      print('Barcode ID: $barcodeId');
 
       // İstediğiniz işlemi gerçekleştirin
     } else {
       // Barkod eşleşen ürün bulunamadı
 
-      print("else içine girdik");
       // İstediğiniz işlemi gerçekleştirin veya hata durumunu yönetin
     }
   }

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:pharmacy/consts/colors.dart';
 
 import 'package:pharmacy/consts/styles.dart';
-import 'package:pharmacy/controller/product_controller.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/category_details.dart';
 import 'package:velocity_x/velocity_x.dart';
 

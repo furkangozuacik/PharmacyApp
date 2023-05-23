@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy/consts/consts.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
 import 'package:pharmacy/controller/home_controller.dart';
 

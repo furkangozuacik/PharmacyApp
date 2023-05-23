@@ -24,7 +24,7 @@ class CartScreen extends StatelessWidget {
             child: ourButton(
                 color: redColor,
                 onPress: () {
-                  Get.to(() => ShippingDetails());
+                  Get.to(() =>const ShippingDetails());
                 },
                 textColor: whiteColor,
                 title: "Proceed to shipping")),
@@ -55,13 +55,15 @@ class CartScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Expanded(
-                          child: Container(
-                              child: ListView.builder(
+                          child: ListView.builder(
                         itemCount: data.length,
                         itemBuilder: (BuildContext context, int index) {
                           return ListTile(
-                            leading: Image.network("${data[index]['img']}",width: 80,fit: BoxFit.cover,),
-                            
+                            leading: Image.network(
+                              "${data[index]['img']}",
+                              width: 80,
+                              fit: BoxFit.cover,
+                            ),
                             title:
                                 "${data[index]['title']} x${data[index]['qty']}"
                                     .text
@@ -82,7 +84,7 @@ class CartScreen extends StatelessWidget {
                             }),
                           );
                         },
-                      ))),
+                      )),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

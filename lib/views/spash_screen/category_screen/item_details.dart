@@ -8,7 +8,6 @@ import 'package:pharmacy/consts/strings.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/controller/product_controller.dart';
 import 'package:pharmacy/views/spash_screen/chat_screen/seller_chat_screen.dart';
-import 'package:pharmacy/views/spash_screen/chatscreen.dart';
 import 'package:pharmacy/widgets_common/our_button.dart';
 import 'package:velocity_x/velocity_x.dart';
 

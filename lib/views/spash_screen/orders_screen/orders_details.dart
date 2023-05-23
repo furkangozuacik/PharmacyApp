@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/styles.dart';
@@ -125,14 +127,18 @@ class OrdersDetails extends StatelessWidget {
                       child: Container(
                         width: 30,
                         height: 20,
-                        color: Color(data["orders"][index]["color"]),
                       ),
                     ),
                     const Divider(),
                   ],
                 );
               }).toList(),
-            ).box.outerShadowMd.white.margin(EdgeInsets.only(bottom: 4)).make(),
+            )
+                .box
+                .outerShadowMd
+                .white
+                .margin(const EdgeInsets.only(bottom: 4))
+                .make(),
             20.heightBox,
           ]),
         ),

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/styles.dart';
 import 'package:pharmacy/services/firestore_services.dart';

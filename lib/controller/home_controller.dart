@@ -5,6 +5,7 @@ import 'package:pharmacy/consts/firebase_consts.dart';
 class HomeController extends GetxController {
   var currentNavIndex = 0.obs;
   var username = "";
+  @override
   void onInit() {
     getUsername();
     super.onInit();

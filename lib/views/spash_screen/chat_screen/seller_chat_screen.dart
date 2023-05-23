@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:get/get.dart';
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
@@ -95,7 +94,7 @@ class SellerChatScreen extends StatelessWidget {
               .box
               .height(80)
               .padding(const EdgeInsets.all(12))
-              .margin(EdgeInsets.only(bottom: 8))
+              .margin(const EdgeInsets.only(bottom: 8))
               .make()
         ]),
       ),

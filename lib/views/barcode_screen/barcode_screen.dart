@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:pharmacy/controller/product_controller.dart';
 import 'package:pharmacy/views/barcode_screen/overlay.dart';
-import 'package:pharmacy/views/barcode_screen/result_screen.dart';
 
 const bgColor = Color(0xfffafafa);
 
@@ -62,27 +61,25 @@ class _QRScannerState extends State<QRScanner> {
         child: Column(
           children: [
             Expanded(
-                child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Place the QR code in the area",
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Scanning will be started automatically",
-                    style: TextStyle(fontSize: 16, color: Colors.black54),
-                  )
-                ],
-              ),
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  "Place the QR code in the area",
+                  style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Scanning will be started automatically",
+                  style: TextStyle(fontSize: 16, color: Colors.black54),
+                )
+              ],
             )),
             Expanded(
               flex: 4,
