@@ -16,6 +16,7 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: redColor,
         appBar: AppBar(
           title: title!.text.color(darkFontGrey).make(),
           backgroundColor: whiteColor,
@@ -53,8 +54,8 @@ class SearchScreen extends StatelessWidget {
                               children: [
                                 Image.network(
                                   filtered[index]["p_imgs"][0],
-                                  width: 130,
-                                  height: 130,
+                                  width: 180,
+                                  height: 180,
                                   fit: BoxFit.cover,
                                 ),
                                 10.heightBox,
@@ -62,7 +63,7 @@ class SearchScreen extends StatelessWidget {
                                     .text
                                     .fontFamily(semibold)
                                     .color(darkFontGrey)
-                                    .make(),
+                                    .makeCentered(),
                                 10.heightBox,
                                 "${filtered[index]["p_price"]}"
                                     .numCurrencyWithLocale(locale: "tr_TR")
@@ -70,7 +71,7 @@ class SearchScreen extends StatelessWidget {
                                     .color(redColor)
                                     .fontFamily(bold)
                                     .size(16)
-                                    .make()
+                                    .makeCentered()
                               ],
                             )
                                 .box

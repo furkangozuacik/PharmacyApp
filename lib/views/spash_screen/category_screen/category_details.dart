@@ -62,7 +62,7 @@ class CategoryDetails extends StatelessWidget {
                                           children: [
                                             Image.network(
                                               data[index]["p_imgs"][0],
-                                              height: 150,
+                                              height: 170,
                                               width: 200,
                                               fit: BoxFit.cover,
                                             ),
@@ -70,7 +70,7 @@ class CategoryDetails extends StatelessWidget {
                                                 .text
                                                 .fontFamily(semibold)
                                                 .color(darkFontGrey)
-                                                .make(),
+                                                .makeCentered(),
                                             10.heightBox,
                                             "${data[index]['p_price']}"
                                                 .numCurrencyWithLocale(
@@ -79,7 +79,7 @@ class CategoryDetails extends StatelessWidget {
                                                 .color(redColor)
                                                 .fontFamily(bold)
                                                 .size(16)
-                                                .make()
+                                                .makeCentered()
                                           ],
                                         )
                                             .box

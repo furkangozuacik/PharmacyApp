@@ -27,8 +27,7 @@ class ProductController extends GetxController {
       // Barkod eşleşen ürün bulundu
       barcodeId = querySnapshot.docs.first['p_barcode'] ?? "1005632parol";
 
-      Get.to(() =>const WishlistScreen());
-
+      Get.to(() => const PrescriptionScreen());
 
       // İstediğiniz işlemi gerçekleştirin
     } else {

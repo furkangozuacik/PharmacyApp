@@ -19,6 +19,7 @@ import 'package:pharmacy/views/spash_screen/auth_screen/login_screen.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/category_screen.dart';
 import 'package:pharmacy/views/spash_screen/category_screen/item_details.dart';
 import 'package:pharmacy/views/spash_screen/chatscreen.dart';
+import 'package:pharmacy/views/spash_screen/dialogflow_screen/dialogflow_screen.dart';
 import 'package:pharmacy/views/spash_screen/home_screen/components/featured_button.dart';
 import 'package:pharmacy/views/spash_screen/home_screen/search_screen.dart';
 import 'package:pharmacy/views/spash_screen/profile_screen/profile_screen.dart';
@@ -193,10 +194,9 @@ class HomeScreen extends StatelessWidget {
                                 case 2:
                                   Get.to(() => const NearPharmaciesScreen());
                                   break;
-                                case 3:
-                                  Get.to(() => const ChatScreen());
+                                case 0:
+                                  Get.to(() => const Bot());
                                   break;
-                                default:
                               }
                             },
                             child: Image.asset(secondSliderList[index],

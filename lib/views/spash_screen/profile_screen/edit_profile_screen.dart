@@ -21,7 +21,6 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.find<ProfileController>();
-  
 
     return bgWidget(
         child: Scaffold(
@@ -61,13 +60,13 @@ class EditProfileScreen extends StatelessWidget {
             customTextField(
                 controller: controller.oldpassController,
                 hint: passwordHint,
-                title: "Old Password",
+                title: "Password",
                 isPass: false),
             10.heightBox,
             customTextField(
                 controller: controller.newpassController,
                 hint: passwordHint,
-                title: "New Password",
+                title: "Retype Password",
                 isPass: false),
             10.heightBox,
             SizedBox(

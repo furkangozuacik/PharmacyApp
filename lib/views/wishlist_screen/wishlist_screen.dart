@@ -9,8 +9,8 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../../consts/firebase_consts.dart';
 
-class WishlistScreen extends StatelessWidget {
-  const WishlistScreen({super.key});
+class PrescriptionScreen extends StatelessWidget {
+  const PrescriptionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
