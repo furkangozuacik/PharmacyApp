@@ -1,4 +1,3 @@
-
 import 'package:pharmacy/consts/colors.dart';
 import 'package:pharmacy/consts/consts.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
@@ -64,10 +63,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     title: retypePassword,
                     controller: passwordRetypeController,
                     isPass: true),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                        onPressed: () {}, child: forgetPassword.text.make())),
                 5.heightBox,
                 Row(
                   children: [
@@ -83,7 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     10.widthBox,
                     Expanded(
                       child: RichText(
-                        text:const TextSpan(children: [
+                        text: const TextSpan(children: [
                           TextSpan(
                               text: "I agree to the ",
                               style: TextStyle(
@@ -131,7 +126,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               }).then((value) {
                                 VxToast.show(context, msg: loggedin);
 
-                                Get.offAll(() =>const Home());
+                                Get.offAll(() => const Home());
                               });
                             } catch (e) {
                               auth.signOut();
@@ -142,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         }).box.width(context.screenWidth - 50).make(),
                 10.heightBox,
                 RichText(
-                    text:const TextSpan(children: [
+                    text: const TextSpan(children: [
                   TextSpan(
                       text: alreadyHaveAccount,
                       style: TextStyle(fontFamily: bold, color: fontGrey)),

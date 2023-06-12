@@ -48,10 +48,6 @@ class LoginScreen extends StatelessWidget {
                     title: password,
                     isPass: true,
                     controller: controller.passwordController),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                        onPressed: () {}, child: forgetPassword.text.make())),
                 5.heightBox,
                 controller.isloading.value
                     ? const CircularProgressIndicator(
@@ -110,6 +106,5 @@ class LoginScreen extends StatelessWidget {
 
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
-
   }
 }
