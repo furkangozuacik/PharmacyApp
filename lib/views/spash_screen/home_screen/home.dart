@@ -13,6 +13,7 @@ import 'package:get/get.dart';
 import 'package:pharmacy/widgets_common/exit_dialog.dart';
 
 import '../../../consts/colors.dart';
+import '../chatscreen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -30,17 +31,11 @@ class Home extends StatelessWidget {
           ),
           label: home),
       BottomNavigationBarItem(
-          icon: Image.asset(
-            icCategories,
-            width: 26,
+          icon: Icon(
+            Icons.favorite,
+            color: redColor,
           ),
-          label: categories),
-      BottomNavigationBarItem(
-          icon: Image.asset(
-            icCart,
-            width: 26,
-          ),
-          label: cart),
+          label: "Favorites"),
       BottomNavigationBarItem(
           icon: Image.asset(
             icProfile,
@@ -57,10 +52,9 @@ class Home extends StatelessWidget {
 
     var navBody = [
       const HomeScreen(),
-      const CategoryScreen(),
       const CartScreen(),
       const ProfileScreen(),
-      const Bot()
+      const ChatScreen()
     ];
     return WillPopScope(
       onWillPop: () async {

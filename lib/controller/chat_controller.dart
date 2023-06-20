@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class ChatController extends GetxController {
   Future<String> generateResponse(String prompt) async {
-    const apiKey = "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";
+    const apiKey = "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";
 
     var url = Uri.https("api.openai.com", "/v1/completions");
     final response = await http.post(

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pharmacy/consts/firebase_consts.dart';
 import "package:pharmacy/models/category_model.dart";
 import 'package:flutter/services.dart';
+import 'package:pharmacy/views/spash_screen/cart_screen/cart_screen.dart';
 import 'package:pharmacy/views/wishlist_screen/wishlist_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -27,7 +28,7 @@ class ProductController extends GetxController {
       // Barkod eşleşen ürün bulundu
       barcodeId = querySnapshot.docs.first['p_barcode'] ?? "1005632parol";
 
-      Get.to(() => const PrescriptionScreen());
+      Get.to(() => const CartScreen());
 
       // İstediğiniz işlemi gerçekleştirin
     } else {

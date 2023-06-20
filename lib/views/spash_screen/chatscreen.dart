@@ -34,13 +34,10 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
-        title: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(
-            "Neyim var?",
-            maxLines: 2,
-            textAlign: TextAlign.center,
-          ),
+        title: Text(
+          "Ask me about ITIL modules or something?",
+          maxLines: 2,
+          textAlign: TextAlign.start,
         ),
         backgroundColor: botBackgroundColor,
       ),
