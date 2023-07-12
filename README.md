@@ -3,12 +3,21 @@ artificial intelligence supported e-pharmacy mobile application
 <hr>
 <br/>
 
-![image](https://github.com/furkangozuacik/PharmacyApp/assets/61828362/83d7832b-db72-4ac5-ab2d-8441a87bcce0)
+![image](https://github.com/furkangozuacik/PharmacyApp/blob/main/assets/images/ai.jpg)
 <br/>
 PharmacyBot
 
 <br/>
 
-![image](https://github.com/furkangozuacik/PharmacyApp/assets/61828362/2cdba70c-e3a6-4973-bade-ba34b3e31a02)
+![image](https://github.com/furkangozuacik/PharmacyApp/blob/main/assets/images/arayuz1.jpg)
 
 <br/>
+
+![image](https://github.com/furkangozuacik/PharmacyApp/blob/main/assets/images/arayuz2.jpg)
+
+<br/>
+
+![image](https://github.com/furkangozuacik/PharmacyApp/blob/main/assets/images/firebase.jpg)
+
+<br/>
+Firebase DB
